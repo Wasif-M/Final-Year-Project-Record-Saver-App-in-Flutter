@@ -1,25 +1,4 @@
 import 'package:flutter/material.dart';
-import "splash_screen.dart";
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: HomeScreen(),
-      ),
-    );
-  }
-}
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -36,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Container(
             height:
-                size.height * .45, // height of container is total 45% of height
+            size.height * .45, // height of container is total 45% of height
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
@@ -102,3 +81,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
