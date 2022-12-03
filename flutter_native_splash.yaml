@@ -1,9 +1,0 @@
-flutter_native_splash:
-  color: "Colors.white";
-  image: assets/ilustration.png
-  andriod: true
-  ios: true
-  web: true
-  andriod 12:
-    color: "Colors.white";
-    image: assets/ilustration.png
