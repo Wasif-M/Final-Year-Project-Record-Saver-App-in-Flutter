@@ -1,3 +1,5 @@
+import 'dart:math';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/HomeScreen.dart';
 import "splash_screen.dart";
@@ -46,9 +48,8 @@ class Form extends StatefulWidget {
 }
 
 class _FormState extends State<Form> {
-  void _showDatePicker(){
-    showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(1966), lastDate: DateTime(2024));
-  }
+  TextEditingController _date=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -60,7 +61,8 @@ class _FormState extends State<Form> {
             padding: const EdgeInsets.only(top: 8.0),
             child: TextField(
               decoration: InputDecoration(
-                  hintText: "Project Name",
+                labelText: "Project Name",
+                  hintText: "Enter Project Name",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   )),
@@ -70,7 +72,8 @@ class _FormState extends State<Form> {
             padding: const EdgeInsets.only(top: 8.0),
             child: TextField(
               decoration: InputDecoration(
-                  hintText: "Supervisor",
+                  labelText: "Supervisor Name",
+                  hintText: "Enter Supervisor Name",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   )),
@@ -80,7 +83,8 @@ class _FormState extends State<Form> {
             padding: const EdgeInsets.only(top: 8.0),
             child: TextField(
               decoration: InputDecoration(
-                  hintText: "Department",
+                  labelText: "Department Name",
+                  hintText: "Enter Department Name",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   )),
@@ -90,42 +94,45 @@ class _FormState extends State<Form> {
             padding: const EdgeInsets.only(top: 8.0),
             child: TextField(
               decoration: InputDecoration(
+                  labelText: "Group Name",
+                  hintText: "Enter Group Name",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: TextField(
+              controller: _date,
+
+              decoration: InputDecoration(
+                  labelText: "Select Year",
+                icon: Icon(Icons.calendar_today_rounded),
                   hintText: "Group",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   )),
+              onTap: () async {
+                DateTime? pickeddate= await showDatePicker(context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(1966),
+                    lastDate: DateTime(2024),
+                );
+                if(pickeddate != null){
+                  setState(() {
+                    _date.text= formatDate(pickeddate, [yyyy, '-', mm, '-', dd]);
+                  });
+                }
+              }
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              children: [
-                MaterialButton(
-                  color: Color.fromRGBO(0, 103, 254, 50),
-                  onPressed:  _showDatePicker,
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Text(
-                      "Year",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: MaterialButton(
-                    color: Color.fromRGBO(0, 103, 254, 50),
-                    onPressed: () {},
-                    child: Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        "Grade",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                )
-              ],
+
+          Center(
+            child: MaterialButton(
+              onPressed: () {},
+              child: Text("Submit", style: TextStyle(color: Colors.white)),
+              color: Color.fromRGBO(0, 103, 254, 50),
             ),
           )
         ],
