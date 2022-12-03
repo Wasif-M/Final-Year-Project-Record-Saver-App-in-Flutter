@@ -40,6 +40,10 @@ class Form extends StatefulWidget {
 
 class _FormState extends State<Form> {
   TextEditingController _date=TextEditingController();
+  var projectName=TextEditingController();
+  var supervisorName=TextEditingController();
+  var departName=TextEditingController();
+  var groupName=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +55,7 @@ class _FormState extends State<Form> {
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: TextField(
+              controller: projectName,
               decoration: InputDecoration(
                   labelText: "Project Name",
                   hintText: "Enter Project Name",
@@ -62,6 +67,7 @@ class _FormState extends State<Form> {
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: TextField(
+              controller: supervisorName,
               decoration: InputDecoration(
                   labelText: "Supervisor Name",
                   hintText: "Enter Supervisor Name",
@@ -73,6 +79,7 @@ class _FormState extends State<Form> {
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: TextField(
+              controller: departName,
               decoration: InputDecoration(
                   labelText: "Department Name",
                   hintText: "Enter Department Name",
@@ -84,6 +91,7 @@ class _FormState extends State<Form> {
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: TextField(
+              controller:groupName,
               decoration: InputDecoration(
                   labelText: "Group Name",
                   hintText: "Enter Group Name",
