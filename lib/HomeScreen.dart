@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'NewRecords.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -34,39 +35,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.verified_user_outlined,
-                            size: 100,
-                            color: Color.fromRGBO(0, 103, 254, 50),
-                          ),
-                          Text("All Records",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 50),fontSize: 20),)
-                        ],
+                    child: MaterialButton(
+                      onPressed: (){},
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.verified_user_outlined,
+                              size: 100,
+                              color: Color.fromRGBO(0, 103, 254, 50),
+                            ),
+                            Text("All Records",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 50),fontSize: 20),)
+                          ],
+                        ),
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.edit_calendar_outlined,
-                            size: 100,
-                            color: Color.fromRGBO(0, 103, 254, 50),
-                          ),
-                          Text("New Record",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 50),fontSize: 20),)
-                        ],
+                    child: MaterialButton(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MyApp()));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.edit_calendar_outlined,
+                              size: 100,
+                              color: Color.fromRGBO(0, 103, 254, 50),
+                            ),
+                            Text("New Record",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 50),fontSize: 20),)
+                          ],
+                        ),
                       ),
                     ),
                   ),
