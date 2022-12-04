@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyp_recordsaver/Screens/AllRecords.dart';
 import 'NewRecords.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -36,7 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: MaterialButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
+                      },
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -59,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: MaterialButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MyApp()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> NewRecords()));
                       },
                       child: Container(
                         decoration: BoxDecoration(

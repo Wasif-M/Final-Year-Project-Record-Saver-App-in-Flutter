@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'HomeScreen.dart';
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class NewRecords extends StatelessWidget {
+  const NewRecords({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
