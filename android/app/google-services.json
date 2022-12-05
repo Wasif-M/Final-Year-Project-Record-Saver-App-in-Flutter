@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "732983011520",
+    "project_id": "fyp-recordsaver",
+    "storage_bucket": "fyp-recordsaver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732983011520:android:594c130fd50f0c3067e525",
+        "android_client_info": {
+          "package_name": "com.markaz.fyp_recordsaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732983011520-qpnjd58vpn28g18an2kpgo417rempkj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_Mf5D_RSO88e0IDNZ5A_p252Z0uzZPH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732983011520-qpnjd58vpn28g18an2kpgo417rempkj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
