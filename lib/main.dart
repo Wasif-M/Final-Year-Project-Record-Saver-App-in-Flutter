@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyp_recordsaver/Screens/HomeScreen.dart';
 import 'package:fyp_recordsaver/main.dart';
 import 'Screens/splash_screen.dart';
 import "package:firebase_core/firebase_core.dart";
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
-        body: Splash(),
+        body: HomeScreen(),
       ),
     );
   }
