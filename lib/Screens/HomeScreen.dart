@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Container(
             height:
-            size.height * .45, // height of container is total 45% of height
+            size.height * .48, // height of container is total 45% of height
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
@@ -31,12 +31,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(top: 300),
+              padding: const EdgeInsets.only(top: 330),
               child: GridView(
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: MaterialButton(
+                      minWidth: 20,
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
                       },

@@ -4,7 +4,7 @@
     <item android:drawable="@android:color/white" />
 
     <!-- You can insert your own image assets here -->
-    <item>
+   <!-- <item>
         <bitmap
             android:layout_width="match_parent"
             android:layout_height="match_parent"

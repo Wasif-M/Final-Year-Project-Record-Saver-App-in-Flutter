@@ -133,7 +133,7 @@ class _FormState extends State<Form> {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
               },
-              child: Text("Submit", style: TextStyle(color: Colors.white)),
+              child: Text("Save", style: TextStyle(color: Colors.white)),
               color: Color.fromRGBO(0, 103, 254, 50),
             ),
           )
