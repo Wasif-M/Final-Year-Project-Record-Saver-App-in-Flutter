@@ -16,7 +16,6 @@ class _SplashState extends State<Splash> {
       child: EasySplashScreen(
         logo: Image(image: AssetImage('assets/ilustration.png')),
         logoWidth: 200,
-
         navigator: HomeScreen(),
         durationInSeconds: 2,
         showLoader: false,

@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(top: 330),
+              padding: const EdgeInsets.only(top: 360),
               child: GridView(
                 children: [
                   Padding(
