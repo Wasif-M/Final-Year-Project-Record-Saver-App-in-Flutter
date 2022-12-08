@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/Screens/AllRecords.dart';
+import 'package:fyp_recordsaver/Screens/user.dart';
 import 'NewRecords.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Container(
             height:
-            size.height * .48, // height of container is total 45% of height
+                size.height * .48, // height of container is total 45% of height
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
@@ -38,8 +40,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: MaterialButton(
                       minWidth: 20,
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AllRecords()));
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -53,7 +58,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               size: 100,
                               color: Color.fromRGBO(0, 103, 254, 50),
                             ),
-                            Text("All Records",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 50),fontSize: 20),)
+                            Text(
+                              "All Records",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(0, 103, 254, 50),
+                                  fontSize: 20),
+                            )
                           ],
                         ),
                       ),
@@ -62,8 +72,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: MaterialButton(
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> NewRecords()));
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NewRecords()));
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -77,7 +90,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               size: 100,
                               color: Color.fromRGBO(0, 103, 254, 50),
                             ),
-                            Text("New Record",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 50),fontSize: 20),)
+                            Text(
+                              "New Record",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(0, 103, 254, 50),
+                                  fontSize: 20),
+                            )
                           ],
                         ),
                       ),
@@ -88,10 +106,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisCount: 2, mainAxisSpacing: 100.0),
               ),
             ),
-          )
+          ),
+          Padding(padding: EdgeInsets.only(top: 600),child:           MaterialButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => WhoAreYou()));
+            },
+            child: Container(
+              alignment: Alignment.center,
+              height: 45,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(12)),
+              child: Text(
+                'Logout',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20),
+              ),
+            ),
+          ),)
         ],
       ),
     );
   }
 }
-

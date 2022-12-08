@@ -4,7 +4,7 @@ import 'package:fyp_recordsaver/Screens/HomeScreen.dart';
 import 'package:fyp_recordsaver/Screens/StudentLogin.dart';
 import 'package:fyp_recordsaver/Screens/TeachersLogin.dart';
 
-class IdentifyWho extends StatelessWidget {
+/*class IdentifyWho extends StatelessWidget {
   const IdentifyWho({Key? key}) : super(key: key);
 
   @override
@@ -13,7 +13,7 @@ class IdentifyWho extends StatelessWidget {
       body: WhoAreYou(),
     );
   }
-}
+}*/
 
 class WhoAreYou extends StatefulWidget {
   const WhoAreYou({Key? key}) : super(key: key);
@@ -63,7 +63,7 @@ class _WhoAreYouState extends State<WhoAreYou> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image(image: AssetImage("assets/teacherilustration.png")),
-                            Text("Supervisor",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 50),fontSize: 20),)
+                            Text("Supervisor",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 20),fontSize: 20),)
                           ],
                         ),
                       ),
@@ -83,7 +83,7 @@ class _WhoAreYouState extends State<WhoAreYou> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image(image: AssetImage("assets/Student.jpg")),
-                            Text("Student",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 50),fontSize: 20),)
+                            Text("Student",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 20),fontSize: 20),)
                           ],
                         ),
                       ),
