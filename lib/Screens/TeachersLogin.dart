@@ -35,7 +35,7 @@ class _teachersLoginState extends State<teachersLogin> {
 
           SizedBox(height: 30,),
           Padding(
-            padding: const EdgeInsets.only(top: 350),
+            padding: const EdgeInsets.only(top: 280),
             child: Column(
               children: [
                 Container(
@@ -48,7 +48,7 @@ class _teachersLoginState extends State<teachersLogin> {
                       hintText: "Enter Student Email",),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextField(
@@ -69,7 +69,7 @@ class _teachersLoginState extends State<teachersLogin> {
                       },
                       child: Container(
                         alignment: Alignment.center,
-                        height: 55,
+                        height: 45,
                         decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(12)),
                         child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 20),),
                       ),
@@ -77,10 +77,10 @@ class _teachersLoginState extends State<teachersLogin> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 25.0),
+                  padding: const EdgeInsets.only(top: 14.0),
                   child: Center(
                     child: Container(
-                      child: Text("Supervisor Login",style: TextStyle(color: Color.fromRGBO(57, 43, 116, 50),fontSize: 35,fontWeight: FontWeight.w800),),
+                      child: Text("Supervisor Login",style: TextStyle(color: Color.fromRGBO(57, 43, 116, 50),fontSize: 25,fontWeight: FontWeight.w800),),
                     ),
                   ),
                 )

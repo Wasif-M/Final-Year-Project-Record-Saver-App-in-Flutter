@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   bottomLeft: Radius.circular(50),
                   bottomRight: Radius.circular(50),
                 ),
-                color: Color.fromRGBO(51, 52, 78, 90),
+                color: Colors.white,
                 image: DecorationImage(
                   alignment: Alignment.center,
                   image: AssetImage('assets/home.png'),

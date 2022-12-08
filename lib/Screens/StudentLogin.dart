@@ -32,9 +32,9 @@ class _studentInformationState extends State<studentInformation> {
                   image: AssetImage('assets/login.jpg'),
                 )),
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 10),
           Padding(
-            padding: const EdgeInsets.only(top: 310),
+            padding: const EdgeInsets.only(top: 270),
             child: Column(
               children: [
                 Container(
@@ -62,7 +62,7 @@ class _studentInformationState extends State<studentInformation> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: InkWell(
@@ -72,7 +72,7 @@ class _studentInformationState extends State<studentInformation> {
                       },
                       child: Container(
                         alignment: Alignment.center,
-                        height: 55,
+                        height: 45,
                         decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(12)),
                         child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 20),),
                       ),
@@ -80,7 +80,7 @@ class _studentInformationState extends State<studentInformation> {
                   ),
                 ),
                 Container(
-                          child: Text("Student Login",textAlign: TextAlign.center,style: TextStyle(color: Color.fromRGBO(100, 165, 255, 50),fontSize: 35,fontWeight: FontWeight.w800,),),
+                          child: Text("Student Login",textAlign: TextAlign.center,style: TextStyle(color: Color.fromRGBO(100, 165, 255, 50),fontSize: 25,fontWeight: FontWeight.w800,),),
                         ),
 
               ],
