@@ -9,6 +9,7 @@ class studentInformation extends StatefulWidget {
 }
 
 class _studentInformationState extends State<studentInformation> {
+  bool _isHidden = true;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -33,7 +34,7 @@ class _studentInformationState extends State<studentInformation> {
           ),
           SizedBox(height: 30,),
           Padding(
-            padding: const EdgeInsets.only(top: 300),
+            padding: const EdgeInsets.only(top: 350),
             child: Column(
               children: [
                 Container(
@@ -41,6 +42,7 @@ class _studentInformationState extends State<studentInformation> {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
                       suffixIcon: Icon(Icons.email),
+
                         labelText: "Email",
                         hintText: "Enter Student Email",),
                   ),
@@ -48,11 +50,12 @@ class _studentInformationState extends State<studentInformation> {
                 SizedBox(height: 30),
                 Container(
                   child: TextField(
+                    obscureText: _isHidden,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(30),),
                         suffixIcon: Icon(Icons.remove_red_eye),
                         labelText: "Enter Password",
-                        hintText: ".....",),
+                        hintText: "Password",),
                   ),
                 ),
                 Padding(
@@ -65,6 +68,15 @@ class _studentInformationState extends State<studentInformation> {
                       color: Color.fromRGBO(0, 103, 254, 50),
                     ),
                 ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 30),
+                      child: Center(
+                        child: Container(
+                          child: Text("Student Login",style: TextStyle(color: Color.fromRGBO(100, 165, 255, 50),fontSize: 35,fontWeight: FontWeight.w800),),
+                        ),
+                      ),
+                    ),
+
               ],
             ),
           ),
