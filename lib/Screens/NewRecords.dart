@@ -50,12 +50,12 @@ class _FormState extends State<Form> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(3.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 4.0),
             child: TextField(
               controller: projectName,
               decoration: InputDecoration(
@@ -67,7 +67,7 @@ class _FormState extends State<Form> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 4.0),
             child: TextField(
               controller: supervisorName,
               decoration: InputDecoration(
@@ -79,7 +79,7 @@ class _FormState extends State<Form> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 3.0),
             child: TextField(
               controller: departName,
               decoration: InputDecoration(
@@ -91,7 +91,7 @@ class _FormState extends State<Form> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 3.0),
             child: TextField(
               controller: batch,
               decoration: InputDecoration(
@@ -103,7 +103,7 @@ class _FormState extends State<Form> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 4.0),
             child: TextField(
               controller:groupName,
               decoration: InputDecoration(
@@ -115,7 +115,7 @@ class _FormState extends State<Form> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top:3),
             child: TextField(
                 controller: _date,
 
@@ -141,7 +141,7 @@ class _FormState extends State<Form> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(4.0),
             child: InkWell(
               child: MaterialButton(
                 onPressed: (){
@@ -149,7 +149,7 @@ class _FormState extends State<Form> {
                 },
                 child: Container(
                   alignment: Alignment.center,
-                  height: 55,
+                  height: 40,
                   decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(12)),
                   child: Text('Save',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 20),),
                 ),
