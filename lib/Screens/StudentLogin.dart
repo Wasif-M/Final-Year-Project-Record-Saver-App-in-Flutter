@@ -20,7 +20,7 @@ class _studentInformationState extends State<studentInformation> {
           Container(
 
             height:
-            size.height * .30, // height of container is total 45% of height
+            size.height * .30,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
@@ -32,50 +32,56 @@ class _studentInformationState extends State<studentInformation> {
                   image: AssetImage('assets/login.jpg'),
                 )),
           ),
-          SizedBox(height: 30,),
+          SizedBox(height: 20,),
           Padding(
-            padding: const EdgeInsets.only(top: 350),
+            padding: const EdgeInsets.only(top: 310),
             child: Column(
               children: [
                 Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextField(
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                       suffixIcon: Icon(Icons.email),
 
                         labelText: "Email",
                         hintText: "Enter Student Email",),
                   ),
                 ),
-                SizedBox(height: 30),
-                Container(
-                  child: TextField(
-                    obscureText: _isHidden,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(30),),
-                        suffixIcon: Icon(Icons.remove_red_eye),
-                        labelText: "Enter Password",
-                        hintText: "Password",),
+                //SizedBox(height: 20),
+                SafeArea(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextField(
+                      obscureText: _isHidden,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
+                          suffixIcon: Icon(Icons.remove_red_eye),
+                          labelText: "Enter Password",
+                          hintText: "Password",),
+                    ),
                   ),
                 ),
+                SizedBox(height: 10),
                 Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: MaterialButton(
-                      onPressed: () {
+                  padding: const EdgeInsets.all(12.0),
+                  child: InkWell(
+                    child: MaterialButton(
+                      onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
                       },
-                      child: Text("login", style: TextStyle(color: Colors.white,fontSize: 20)),
-                      color: Color.fromRGBO(0, 103, 254, 50),
-                    ),
-                ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 30),
-                      child: Center(
-                        child: Container(
-                          child: Text("Student Login",style: TextStyle(color: Color.fromRGBO(100, 165, 255, 50),fontSize: 35,fontWeight: FontWeight.w800),),
-                        ),
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 55,
+                        decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(12)),
+                        child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 20),),
                       ),
                     ),
+                  ),
+                ),
+                Container(
+                          child: Text("Student Login",textAlign: TextAlign.center,style: TextStyle(color: Color.fromRGBO(100, 165, 255, 50),fontSize: 35,fontWeight: FontWeight.w800,),),
+                        ),
 
               ],
             ),

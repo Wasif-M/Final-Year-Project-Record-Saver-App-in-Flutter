@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:fyp_recordsaver/Screens/AllRecords.dart';
 import 'HomeScreen.dart';
 class teachersLogin extends StatefulWidget {
   const teachersLogin({Key? key}) : super(key: key);
@@ -38,33 +39,41 @@ class _teachersLoginState extends State<teachersLogin> {
             child: Column(
               children: [
                 Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextField(
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                       suffixIcon: Icon(Icons.email),
                       labelText: "Email",
                       hintText: "Enter Student Email",),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 20),
                 Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextField(
                     obscureText: _isHidden,
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30),),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
                       suffixIcon: Icon(Icons.remove_red_eye),
                       labelText: "Enter Password",
                       hintText: "Password",),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: MaterialButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
-                    },
-                    child: Text("login", style: TextStyle(color: Colors.white,fontSize: 20)),
-                    color: Color.fromRGBO(0, 103, 254, 50),
+                  padding: const EdgeInsets.all(12.0),
+                  child: InkWell(
+                    child: MaterialButton(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 55,
+                        decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(12)),
+                        child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 20),),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(

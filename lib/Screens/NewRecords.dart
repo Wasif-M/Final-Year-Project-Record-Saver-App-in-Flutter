@@ -45,6 +45,7 @@ class _FormState extends State<Form> {
   var supervisorName=TextEditingController();
   var departName=TextEditingController();
   var groupName=TextEditingController();
+  var batch=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +93,18 @@ class _FormState extends State<Form> {
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: TextField(
+              controller: batch,
+              decoration: InputDecoration(
+                  labelText: "Batch No",
+                  hintText: "Enter Batch No",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: TextField(
               controller:groupName,
               decoration: InputDecoration(
                   labelText: "Group Name",
@@ -127,16 +140,22 @@ class _FormState extends State<Form> {
                 }
             ),
           ),
-
-          Center(
-            child: MaterialButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
-              },
-              child: Text("Save", style: TextStyle(color: Colors.white)),
-              color: Color.fromRGBO(0, 103, 254, 50),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: InkWell(
+              child: MaterialButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 55,
+                  decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(12)),
+                  child: Text('Save',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 20),),
+                ),
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
