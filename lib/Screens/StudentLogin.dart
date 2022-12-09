@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyp_recordsaver/Screens/AllRecords.dart';
 import 'HomeScreen.dart';
 
 class studentInformation extends StatefulWidget {
@@ -68,7 +69,7 @@ class _studentInformationState extends State<studentInformation> {
                   child: InkWell(
                     child: MaterialButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
                       },
                       child: Container(
                         alignment: Alignment.center,

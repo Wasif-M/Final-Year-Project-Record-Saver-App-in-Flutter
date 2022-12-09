@@ -65,7 +65,7 @@ class _teachersLoginState extends State<teachersLogin> {
                   child: InkWell(
                     child: MaterialButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
                       },
                       child: Container(
                         alignment: Alignment.center,
