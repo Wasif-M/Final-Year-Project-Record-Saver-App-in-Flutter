@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/Screens/Records.dart';
+import 'package:fyp_recordsaver/Screens/StudentLogin.dart';
+import 'package:fyp_recordsaver/Screens/user.dart';
 import 'HomeScreen.dart';
 class AllRecords extends StatelessWidget {
   const AllRecords({Key? key}) : super(key: key);
@@ -10,6 +12,9 @@ class AllRecords extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          actions: [
+            TextButton(onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => WhoAreYou()));}, child: Text('Logout',style: TextStyle(color: Colors.white),))
+          ],
           leading: IconButton(icon: Icon(Icons.arrow_back),color: Colors.white,onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));},),
           toolbarHeight: 60,
           title: Text(
