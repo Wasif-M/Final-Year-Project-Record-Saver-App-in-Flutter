@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Container(
             height:
-                size.height * .48, // height of container is total 45% of height
+                size.height * .48,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
@@ -107,25 +107,29 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.only(top: 600),child:           MaterialButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => WhoAreYou()));
-            },
-            child: Container(
-              alignment: Alignment.center,
-              height: 45,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(12)),
-              child: Text(
-                'Logout',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20),
+          Padding(
+            padding: EdgeInsets.only(top: 600),
+            child: MaterialButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => WhoAreYou()));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 45,
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(12)),
+                child: Text(
+                  'Logout',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20),
+                ),
               ),
             ),
-          ),)
+          )
         ],
       ),
     );

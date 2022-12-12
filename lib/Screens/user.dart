@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fyp_recordsaver/Screens/AllRecords.dart';
-import 'package:fyp_recordsaver/Screens/HomeScreen.dart';
 import 'package:fyp_recordsaver/Screens/StudentLogin.dart';
 import 'package:fyp_recordsaver/Screens/TeachersLogin.dart';
-
-/*class IdentifyWho extends StatelessWidget {
-  const IdentifyWho({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: WhoAreYou(),
-    );
-  }
-}*/
 
 class WhoAreYou extends StatefulWidget {
   const WhoAreYou({Key? key}) : super(key: key);
@@ -31,7 +18,7 @@ class _WhoAreYouState extends State<WhoAreYou> {
         children: [
           Container(
             height:
-            size.height * .40, // height of container is total 45% of height
+            size.height * .40,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),

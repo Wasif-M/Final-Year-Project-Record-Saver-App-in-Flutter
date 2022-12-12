@@ -49,7 +49,6 @@ class _studentInformationState extends State<studentInformation> {
                         hintText: "Enter Student Email",),
                   ),
                 ),
-                //SizedBox(height: 20),
                 SafeArea(
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
