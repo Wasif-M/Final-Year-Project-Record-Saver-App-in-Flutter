@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/Screens/AllRecords.dart';
-import "HomeScreen.dart";
-
 class studentInformation extends StatefulWidget {
   const studentInformation({Key? key}) : super(key: key);
 
