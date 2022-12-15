@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'HomeScreen.dart';
-import 'user.dart';
 class NewRecords extends StatelessWidget {
   const NewRecords({Key? key}) : super(key: key);
 
@@ -60,8 +59,8 @@ class _FormState extends State<Form> {
             child: TextField(
               controller: projectName,
               decoration: InputDecoration(
-                  labelText: "Project Name",
-                  hintText: "Enter Project Name",
+                  labelText: "Project Title",
+                  hintText: "Enter Title",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   )),
