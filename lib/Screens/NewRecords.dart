@@ -43,7 +43,7 @@ class _FormState extends State<Form> {
   TextEditingController _date=TextEditingController();
   var projectName=TextEditingController();
   var supervisorName=TextEditingController();
-  var departName=TextEditingController();
+  var description=TextEditingController();
   var groupName=TextEditingController();
   var batch=TextEditingController();
 
@@ -81,10 +81,10 @@ class _FormState extends State<Form> {
           Padding(
             padding: const EdgeInsets.only(top: 3.0),
             child: TextField(
-              controller: departName,
+              controller: description,
               decoration: InputDecoration(
-                  labelText: "Department Name",
-                  hintText: "Enter Department Name",
+                  labelText: "Description",
+                  hintText: "Enter Project Description",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   )),
