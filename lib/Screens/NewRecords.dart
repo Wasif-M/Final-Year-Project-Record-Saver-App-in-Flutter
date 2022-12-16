@@ -55,6 +55,8 @@ class _FormState extends State<Form> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 10),
+            Container(child: Image(image: AssetImage("assets/fill.jpg"),),),
+            SizedBox(height: 10),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
