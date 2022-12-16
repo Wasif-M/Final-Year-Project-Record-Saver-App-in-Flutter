@@ -44,7 +44,6 @@ class _FormState extends State<Form> {
   var projectName=TextEditingController();
   var supervisorName=TextEditingController();
   var description=TextEditingController();
-  var groupName=TextEditingController();
   var batch=TextEditingController();
 
   @override
@@ -59,6 +58,7 @@ class _FormState extends State<Form> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: projectName,
                 maxLines: 5, minLines: 1,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
@@ -70,6 +70,7 @@ class _FormState extends State<Form> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: supervisorName,
                 maxLines: 5, minLines: 1,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
@@ -81,6 +82,7 @@ class _FormState extends State<Form> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: batch,
                   maxLines: 5, minLines: 1,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
@@ -119,6 +121,7 @@ class _FormState extends State<Form> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: description,
                 cursorHeight: 20,
                 maxLines: 5,
                 minLines: 1,
