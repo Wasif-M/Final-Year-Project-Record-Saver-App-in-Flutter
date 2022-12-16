@@ -51,112 +51,99 @@ class _FormState extends State<Form> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(3.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 4.0),
-            child: TextField(
-              controller: projectName,
-              decoration: InputDecoration(
-                  labelText: "Project Title",
-                  hintText: "Enter Title",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 4.0),
-            child: TextField(
-              controller: supervisorName,
-              decoration: InputDecoration(
-                  labelText: "Supervisor Name",
-                  hintText: "Enter Supervisor Name",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 3.0),
-            child: TextField(
-              controller: description,
-              decoration: InputDecoration(
-                  labelText: "Description",
-                  hintText: "Enter Project Description",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 3.0),
-            child: TextField(
-              controller: batch,
-              decoration: InputDecoration(
-                  labelText: "Batch No",
-                  hintText: "Enter Batch No",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 4.0),
-            child: TextField(
-              controller:groupName,
-              decoration: InputDecoration(
-                  labelText: "Group Name",
-                  hintText: "Enter Group Name",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top:3),
-            child: TextField(
-                controller: _date,
-
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
                 decoration: InputDecoration(
-                    labelText: "Select Year",
-                    icon: Icon(Icons.calendar_today_rounded),
-                    hintText: "Group",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    )),
-                onTap: () async {
-                  DateTime? pickeddate= await showDatePicker(context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(1966),
-                    lastDate: DateTime(2024),
-                  );
-                  if(pickeddate != null){
-                    setState(() {
-                      _date.text= formatDate(pickeddate, [yyyy, '-', mm, '-', dd]);
-                    });
-                  }
-                }
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
+                  labelText: "Project Title",
+                  hintText: "Enter Project Title",),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: InkWell(
-              child: MaterialButton(
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 40,
-                  decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(12)),
-                  child: Text('Save',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 20),),
+            SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
+                  labelText: "Supervisor Name",
+                  hintText: "Enter Supervisor Name",),
+              ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                  maxLines: 5, minLines: 1,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
+                  labelText: "Batch No",
+                  hintText: "Enter Batch No",),
+              ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                    controller: _date,
+
+                    decoration: InputDecoration(
+                        labelText: "Select Year",
+                        icon: Icon(Icons.calendar_today_rounded),
+                        hintText: "Group",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        )),
+                    onTap: () async {
+                      DateTime? pickeddate= await showDatePicker(context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1966),
+                        lastDate: DateTime(2024),
+                      );
+                      if(pickeddate != null){
+                        setState(() {
+                          _date.text= formatDate(pickeddate, [yyyy, '-', mm, '-', dd]);
+                        });
+                      }
+                    }
+                ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                cursorHeight: 20,
+                maxLines: 5,
+                minLines: 1,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
+                  labelText: "Description",
+                  hintText: "Enter Project Description",),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: InkWell(
+                child: MaterialButton(
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 40,
+                    decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(12)),
+                    child: Text('Save',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 20),),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
