@@ -59,6 +59,7 @@ class _FormState extends State<Form> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                maxLines: 5, minLines: 1,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
                   labelText: "Project Title",
@@ -69,6 +70,7 @@ class _FormState extends State<Form> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                maxLines: 5, minLines: 1,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
                   labelText: "Supervisor Name",
