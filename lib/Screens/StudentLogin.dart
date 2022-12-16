@@ -1,5 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/Screens/AllRecords.dart';
+import 'package:auth/auth.dart';
+import "package:firebase_core/firebase_core.dart";
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fyp_recordsaver/Screens/StudentLogin.dart';
+import 'package:fyp_recordsaver/Screens/user.dart';
+/*void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const studentInformation());
+}*/
+
+
+
 class studentInformation extends StatefulWidget {
   const studentInformation({Key? key}) : super(key: key);
 
@@ -8,7 +21,15 @@ class studentInformation extends StatefulWidget {
 }
 
 class _studentInformationState extends State<studentInformation> {
+  final emailController= TextEditingController();
+  final passwordController=TextEditingController();
   bool _isHidden = true;
+  @override
+  void dispose(){
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -39,6 +60,7 @@ class _studentInformationState extends State<studentInformation> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                       suffixIcon: Icon(Icons.email),
@@ -51,6 +73,7 @@ class _studentInformationState extends State<studentInformation> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextField(
+                      controller: passwordController,
                       obscureText: _isHidden,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
@@ -66,7 +89,8 @@ class _studentInformationState extends State<studentInformation> {
                   child: InkWell(
                     child: MaterialButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
+                        signIn();
+                        //Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
                       },
                       child: Container(
                         alignment: Alignment.center,
@@ -88,5 +112,33 @@ class _studentInformationState extends State<studentInformation> {
       ),
     );
   }
+  Future signIn() async{
+    await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(),);
+  }
+
 }
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body:  StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context,snapshot){
+            if(snapshot.hasData)
+            {
+              return AllRecords();
+            }
+            else{
+              return WhoAreYou();
+            }
+
+          }
+      ),
+    );
+  }
+}
+
+
 
