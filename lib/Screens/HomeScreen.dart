@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/Screens/AllRecords.dart';
 import 'package:fyp_recordsaver/Screens/user.dart';
 import 'NewRecords.dart';
+import 'package:auth/auth.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -111,8 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.only(top: 600),
             child: MaterialButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WhoAreYou()));
               },
               child: Container(
                 alignment: Alignment.center,

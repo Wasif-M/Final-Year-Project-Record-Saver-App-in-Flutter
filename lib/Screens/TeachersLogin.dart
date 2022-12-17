@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'HomeScreen.dart';
+import 'package:auth/auth.dart';
 class teachersLogin extends StatefulWidget {
   const teachersLogin({Key? key}) : super(key: key);
 
@@ -8,6 +9,27 @@ class teachersLogin extends StatefulWidget {
 }
 
 class _teachersLoginState extends State<teachersLogin> {
+  bool loading=false;
+  final _auth = FirebaseAuth.instance;
+  final emailController= TextEditingController();
+  final passwordController=TextEditingController();
+
+  void dispose(){
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+  void login(){
+    setState(() {
+      loading=true;
+    });
+    _auth.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(),).then((value){
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => HomeScreen()));
+    });
+  }
+
+
   bool _isHidden = true;
   @override
   Widget build(BuildContext context) {
@@ -40,6 +62,7 @@ class _teachersLoginState extends State<teachersLogin> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                       suffixIcon: Icon(Icons.email),
@@ -51,6 +74,7 @@ class _teachersLoginState extends State<teachersLogin> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextField(
+                    controller: passwordController,
                     obscureText: _isHidden,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
@@ -64,7 +88,7 @@ class _teachersLoginState extends State<teachersLogin> {
                   child: InkWell(
                     child: MaterialButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                        login();
                       },
                       child: Container(
                         alignment: Alignment.center,

@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/Screens/AllRecords.dart';
 import 'package:auth/auth.dart';
-import "package:firebase_core/firebase_core.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fyp_recordsaver/Screens/StudentLogin.dart';
 import 'package:fyp_recordsaver/Screens/user.dart';
-/*void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const studentInformation());
-}*/
+import 'package:fyp_recordsaver/utils.dart';
 
 
 
@@ -21,6 +16,7 @@ class studentInformation extends StatefulWidget {
 }
 
 class _studentInformationState extends State<studentInformation> {
+  final _auth = FirebaseAuth.instance;
   final emailController= TextEditingController();
   final passwordController=TextEditingController();
   bool _isHidden = true;
@@ -30,6 +26,22 @@ class _studentInformationState extends State<studentInformation> {
     passwordController.dispose();
     super.dispose();
   }
+  void login()
+  {
+    _auth.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(),).then((value) => {
+    Navigator.push(context,
+    MaterialPageRoute(builder: (context) => AllRecords())),
+    });
+  }
+  /*void login(){
+    _auth.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(),).then((value){
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => AllRecords()));
+    }).onError((error, stackTrace) => {
+      Utils().toastMessage(error.toString())
+    });
+  }*/
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -89,7 +101,7 @@ class _studentInformationState extends State<studentInformation> {
                   child: InkWell(
                     child: MaterialButton(
                       onPressed: (){
-                        signIn();
+                        login();
                         //Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
                       },
                       child: Container(
@@ -112,12 +124,12 @@ class _studentInformationState extends State<studentInformation> {
       ),
     );
   }
-  Future signIn() async{
+  /*Future signIn() async{
     await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(),);
-  }
+  }*/
 
 }
-class Login extends StatelessWidget {
+/*class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
 
   @override
@@ -138,7 +150,7 @@ class Login extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
 
 
