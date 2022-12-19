@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'HomeScreen.dart';
+
+import 'package:firebase_database/firebase_database.dart';
 class NewRecords extends StatelessWidget {
   const NewRecords({Key? key}) : super(key: key);
 
@@ -45,6 +47,12 @@ class _FormState extends State<Form> {
   var supervisorName=TextEditingController();
   var description=TextEditingController();
   var batch=TextEditingController();
+  late DatabaseReference dbR;
+  @override
+  void initState(){
+    super.initState();
+    dbR= FirebaseDatabase.instance.ref().child("NewRecords");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +146,15 @@ class _FormState extends State<Form> {
               child: InkWell(
                 child: MaterialButton(
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                    Map<String,String> NewRecords= {
+                      "Project Name":projectName.text,
+                      "Supervisor Name":supervisorName.text,
+                      "Description":description.text,
+                      "Date": _date.text,
+                      "Batch No":batch.text,
+                    };
+                    dbR.push().set(NewRecords);
+                    //Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
                   },
                   child: Container(
                     alignment: Alignment.center,
