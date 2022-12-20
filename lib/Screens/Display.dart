@@ -13,6 +13,7 @@ class Display extends StatefulWidget {
 
 class _DisplayState extends State<Display> {
   final dbR = FirebaseDatabase.instance.ref("NewRecords");
+  final searchFilter=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +55,22 @@ class _DisplayState extends State<Display> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
+          SizedBox(height: 10,),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: TextFormField(
+              controller: searchFilter,
+              decoration: InputDecoration(
+                hintText: "Search",
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (String value){
+                setState(() {
+
+                });
+              },
+            ),
+          ),
           SafeArea(
               child: Card(
                 child: FirebaseAnimatedList(
@@ -62,16 +79,37 @@ class _DisplayState extends State<Display> {
                   query: dbR,
                   itemBuilder: (context, snapshot,
                       animation, index) {
-                    return ListTile(
-                      leading: Icon(
-                        Icons.verified_user_outlined,
-                        color: Color.fromRGBO(0, 103, 254, 50),
-                      ),
+                    final title =snapshot.child("Project Name").value.toString();
+                    if(searchFilter.text.isEmpty){
+                      return ListTile(
+                        leading: Icon(
+                          Icons.verified_user_outlined,
+                          color: Color.fromRGBO(0, 103, 254, 50),
+                        ),
                         trailing: IconButton(icon: Icon(Icons.forward_sharp),color: Color.fromRGBO(0, 103, 254, 50),onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Records()));},),
-                      title:
-                          Text(snapshot.child("Project Name").value.toString(),style: TextStyle(
-                              color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),),
-                    );
+                        title:
+                        Text(snapshot.child("Project Name").value.toString(),style: TextStyle(
+                            color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),),
+                        subtitle: Text(snapshot.child("Date").value.toString(),style: TextStyle(
+                            color: Color.fromRGBO(0, 103, 254, 50), fontSize: 10)),
+                      );
+                    }
+                    else if(title.toString().contains(searchFilter.text.toString())){
+                      return ListTile(
+                        leading: Icon(
+                          Icons.verified_user_outlined,
+                          color: Color.fromRGBO(0, 103, 254, 50),
+                        ),
+                        trailing: IconButton(icon: Icon(Icons.forward_sharp),color: Color.fromRGBO(0, 103, 254, 50),onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Records()));},),
+                        title:
+                        Text(snapshot.child("Project Name").value.toString(),style: TextStyle(
+                            color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),),
+                        subtitle: Text(snapshot.child("Date").value.toString(),style: TextStyle(
+                            color: Color.fromRGBO(0, 103, 254, 50), fontSize: 10)),
+                      );
+                    }
+                    else
+                      return Container();
                   },
                 ),
               ),

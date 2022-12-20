@@ -88,7 +88,10 @@ class _teachersLoginState extends State<teachersLogin> {
                   child: InkWell(
                     child: MaterialButton(
                       onPressed: (){
-                        login();
+                        setState(() {
+                          login();
+                        });
+                        //login();
                       },
                       child: Container(
                         alignment: Alignment.center,

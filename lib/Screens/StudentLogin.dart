@@ -97,7 +97,9 @@ class _studentInformationState extends State<studentInformation> {
                   child: InkWell(
                     child: MaterialButton(
                       onPressed: (){
-                        login();
+                        setState(() {
+                          login();
+                        });
                       },
                       child: Container(
                         alignment: Alignment.center,

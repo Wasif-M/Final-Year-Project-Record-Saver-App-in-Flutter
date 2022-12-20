@@ -146,6 +146,9 @@ class _FormState extends State<Form> {
               child: InkWell(
                 child: MaterialButton(
                   onPressed: (){
+                    setState(() {
+
+                    });
                     Map<String,String> NewRecords= {
                       "Project Name":projectName.text,
                       "Supervisor Name":supervisorName.text,
