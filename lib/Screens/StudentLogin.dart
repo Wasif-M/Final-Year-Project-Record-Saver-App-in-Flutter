@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fyp_recordsaver/Screens/AllRecords.dart';
 import 'package:auth/auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fyp_recordsaver/Screens/StudentLogin.dart';
-import 'package:fyp_recordsaver/Screens/user.dart';
-import 'package:fyp_recordsaver/utils.dart';
 import 'Display.dart';
 
 
@@ -103,7 +98,6 @@ class _studentInformationState extends State<studentInformation> {
                     child: MaterialButton(
                       onPressed: (){
                         login();
-                        //Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRecords()));
                       },
                       child: Container(
                         alignment: Alignment.center,
@@ -125,33 +119,9 @@ class _studentInformationState extends State<studentInformation> {
       ),
     );
   }
-  /*Future signIn() async{
-    await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(),);
-  }*/
 
 }
-/*class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body:  StreamBuilder(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context,snapshot){
-            if(snapshot.hasData)
-            {
-              return AllRecords();
-            }
-            else{
-              return WhoAreYou();
-            }
-
-          }
-      ),
-    );
-  }
-}*/
 
 
 
