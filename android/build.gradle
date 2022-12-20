@@ -3,6 +3,7 @@ buildscript {
     repositories {
         maven { url 'https://maven.google.com' }
         google()
+        jcenter()
         mavenCentral()
     }
 
@@ -15,7 +16,10 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url 'https://maven.google.com' }
+        jcenter()
+        maven {
+            url 'https://dl.google.com/dl/android/maven2'
+        }
         google()
         mavenCentral()
     }
@@ -32,3 +36,4 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
