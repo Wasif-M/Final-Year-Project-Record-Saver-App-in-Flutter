@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fyp_recordsaver/Screens/StudentLogin.dart';
 import 'package:fyp_recordsaver/Screens/user.dart';
 import 'package:fyp_recordsaver/utils.dart';
+import 'Display.dart';
 
 
 
@@ -30,7 +31,7 @@ class _studentInformationState extends State<studentInformation> {
   {
     _auth.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(),).then((value) => {
     Navigator.push(context,
-    MaterialPageRoute(builder: (context) => AllRecords())),
+    MaterialPageRoute(builder: (context) => Display())),
     });
   }
   /*void login(){

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/Screens/AllRecords.dart';
-
+import 'Display.dart';
 class Records extends StatefulWidget {
   const Records({Key? key}) : super(key: key);
 
@@ -18,7 +18,7 @@ class _RecordsState extends State<Records> {
           actions: [
             IconButton(onPressed: (){}, icon: Icon(Icons.edit_outlined)),
           ],
-          leading: IconButton(icon: Icon(Icons.arrow_back),color: Colors.white,onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AllRecords()));},),
+          leading: IconButton(icon: Icon(Icons.arrow_back),color: Colors.white,onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Display()));},),
           toolbarHeight: 60,
           title: Text(
             'Record',
