@@ -40,10 +40,8 @@ class _WhoAreYouState extends State<WhoAreYou> {
                     child: MaterialButton(
                       minWidth: 20,
                       onPressed: (){
-                        setState(() {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> teachersLogin()));
-                        });
-                        //Navigator.push(context, MaterialPageRoute(builder: (context)=> teachersLogin()));
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> teachersLogin()));
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -63,10 +61,8 @@ class _WhoAreYouState extends State<WhoAreYou> {
                     padding: const EdgeInsets.all(8.0),
                     child: MaterialButton(
                       onPressed: (){
-                        setState(() {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> studentInformation()));
-                        });
-                        //Navigator.push(context, MaterialPageRoute(builder: (context)=> studentInformation()));
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> studentInformation()));
                       },
                       child: Container(
                         decoration: BoxDecoration(

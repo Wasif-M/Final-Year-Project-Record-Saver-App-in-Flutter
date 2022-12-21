@@ -73,9 +73,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: MaterialButton(
                       onPressed: () {
-                        setState(() {
-
-                        });
                         Navigator.push(
                             context,
                             MaterialPageRoute(
