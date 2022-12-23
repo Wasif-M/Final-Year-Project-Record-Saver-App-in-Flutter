@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'user.dart';
 import 'HomeScreen.dart';
 import 'Records.dart';
+
 class Display extends StatefulWidget {
   const Display({Key? key}) : super(key: key);
 
@@ -13,7 +14,7 @@ class Display extends StatefulWidget {
 
 class _DisplayState extends State<Display> {
   final dbR = FirebaseDatabase.instance.ref("NewRecords");
-  final searchFilter=TextEditingController();
+  final searchFilter = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,80 +54,96 @@ class _DisplayState extends State<Display> {
         ),
       ),
       backgroundColor: Colors.white,
-      body:  SingleChildScrollView(
+      body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-            children: [
-              SizedBox(height: 10,),
-              SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: TextFormField(
-                    controller: searchFilter,
-                    decoration: InputDecoration(
-                      hintText: "Search",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (String value){
-                      setState(() {
-                      });
-                    },
-                  ),
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: TextFormField(
+                controller: searchFilter,
+                decoration: InputDecoration(
+                  hintText: "Search",
+                  border: OutlineInputBorder(),
                 ),
+                onChanged: (String value) {
+                  setState(() {});
+                },
               ),
-              SafeArea(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child:  FirebaseAnimatedList(
-                                shrinkWrap: true,
-                                scrollDirection:Axis.vertical,
-                                query: dbR,
-                                itemBuilder: (context, snapshot,
-                                    animation, index) {
-                                  final title =snapshot.child("Project Name").value.toString();
-                                  if(searchFilter.text.isEmpty){
-                                    return ListTile(
-                                      leading: Icon(
-                                        Icons.verified_user_outlined,
-                                        color: Color.fromRGBO(0, 103, 254, 50),
-                                      ),
-                                      trailing: IconButton(icon: Icon(Icons.forward_sharp),color: Color.fromRGBO(0, 103, 254, 50),onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Records()));},),
-                                      title:
-                                      Text(snapshot.child("Project Name").value.toString(),style: TextStyle(
-                                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),),
-                                      subtitle: Text(snapshot.child("Date").value.toString(),style: TextStyle(
-                                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 10)),
-                                    );
-                                  }
-                                  else if(title.toString().contains(searchFilter.text.toString())){
-                                    return ListTile(
-                                      leading: Icon(
-                                        Icons.verified_user_outlined,
-                                        color: Color.fromRGBO(0, 103, 254, 50),
-                                      ),
-                                      trailing: IconButton(icon: Icon(Icons.forward_sharp),color: Color.fromRGBO(0, 103, 254, 50),onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Records()));},),
-                                      title:
-                                      Text(snapshot.child("Project Name").value.toString(),style: TextStyle(
-                                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),),
-                                      subtitle: Text(snapshot.child("Date").value.toString(),style: TextStyle(
-                                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 10)),
-                                    );
-                                  }
-                                  else
-                                    return Container();
-                                },
-                              ),
-                          ),
-                      ],
-                    ),
-                  ),
+            ),
+            FirebaseAnimatedList(
+              physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                query: dbR,
+                itemBuilder: (context, snapshot, animation, index) {
+                  final title = snapshot.child("Project Name").value.toString();
+                  if (searchFilter.text.isEmpty) {
+                    return ListTile(
+                      leading: Icon(
+                        Icons.verified_user_outlined,
+                        color: Color.fromRGBO(0, 103, 254, 50),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.forward_sharp),
+                        color: Color.fromRGBO(0, 103, 254, 50),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Records()));
+                        },
+                      ),
+                      title: Text(
+                        snapshot.child("Project Name").value.toString(),
+                        style: TextStyle(
+                            color: Color.fromRGBO(0, 103, 254, 50),
+                            fontSize: 20),
+                      ),
+                      subtitle: Text(snapshot.child("Date").value.toString(),
+                          style: TextStyle(
+                              color: Color.fromRGBO(0, 103, 254, 50),
+                              fontSize: 10)),
+                    );
+                  } else if (title
+                      .toString()
+                      .contains(searchFilter.text.toString())) {
+                    return ListTile(
+                      leading: Icon(
+                        Icons.verified_user_outlined,
+                        color: Color.fromRGBO(0, 103, 254, 50),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.forward_sharp),
+                        color: Color.fromRGBO(0, 103, 254, 50),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Records()));
+                        },
+                      ),
+                      title: Text(
+                        snapshot.child("Project Name").value.toString(),
+                        style: TextStyle(
+                            color: Color.fromRGBO(0, 103, 254, 50),
+                            fontSize: 20),
+                      ),
+                      subtitle: Text(snapshot.child("Date").value.toString(),
+                          style: TextStyle(
+                              color: Color.fromRGBO(0, 103, 254, 50),
+                              fontSize: 10)),
+                    );
+                  } else
+                    return Container();
+                },
+              ),
 
-              ),
-            ],
-          ),
+          ],
+        ),
       ),
     );
   }
