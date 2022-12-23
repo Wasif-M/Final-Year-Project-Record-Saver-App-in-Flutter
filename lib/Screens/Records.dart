@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Display.dart';
+
 class Records extends StatefulWidget {
   const Records({Key? key}) : super(key: key);
 
@@ -14,10 +15,14 @@ class _RecordsState extends State<Records> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          actions: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.edit_outlined)),
-          ],
-          leading: IconButton(icon: Icon(Icons.arrow_back),color: Colors.white,onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Display()));},),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.white,
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Display()));
+            },
+          ),
           toolbarHeight: 60,
           title: Text(
             'Record',
@@ -28,13 +33,12 @@ class _RecordsState extends State<Records> {
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
-                )),
+              bottomLeft: Radius.circular(50),
+              bottomRight: Radius.circular(50),
+            )),
           ),
         ),
         backgroundColor: Colors.white,
-        //body: _listView(context),
       ),
     );
   }

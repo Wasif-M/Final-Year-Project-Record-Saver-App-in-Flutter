@@ -22,7 +22,7 @@ class _DisplayState extends State<Display> {
         actions: [
           TextButton(
               onPressed: () {
-                Navigator.pushReplacement(context,
+                Navigator.pop(context,
                     MaterialPageRoute(builder: (context) => WhoAreYou()));
               },
               child: Text(
@@ -34,7 +34,7 @@ class _DisplayState extends State<Display> {
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
-            Navigator.pushReplacement(
+            Navigator.pop(
                 context, MaterialPageRoute(builder: (context) => HomeScreen()));
           },
         ),
@@ -76,72 +76,70 @@ class _DisplayState extends State<Display> {
             ),
             FirebaseAnimatedList(
               physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                query: dbR,
-                itemBuilder: (context, snapshot, animation, index) {
-                  final title = snapshot.child("Project Name").value.toString();
-                  if (searchFilter.text.isEmpty) {
-                    return ListTile(
-                      leading: Icon(
-                        Icons.verified_user_outlined,
-                        color: Color.fromRGBO(0, 103, 254, 50),
-                      ),
-                      trailing: IconButton(
-                        icon: Icon(Icons.forward_sharp),
-                        color: Color.fromRGBO(0, 103, 254, 50),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Records()));
-                        },
-                      ),
-                      title: Text(
-                        snapshot.child("Project Name").value.toString(),
-                        style: TextStyle(
-                            color: Color.fromRGBO(0, 103, 254, 50),
-                            fontSize: 20),
-                      ),
-                      subtitle: Text(snapshot.child("Date").value.toString(),
-                          style: TextStyle(
-                              color: Color.fromRGBO(0, 103, 254, 50),
-                              fontSize: 10)),
-                    );
-                  } else if (title
-                      .toString()
-                      .contains(searchFilter.text.toString())) {
-                    return ListTile(
-                      leading: Icon(
-                        Icons.verified_user_outlined,
-                        color: Color.fromRGBO(0, 103, 254, 50),
-                      ),
-                      trailing: IconButton(
-                        icon: Icon(Icons.forward_sharp),
-                        color: Color.fromRGBO(0, 103, 254, 50),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Records()));
-                        },
-                      ),
-                      title: Text(
-                        snapshot.child("Project Name").value.toString(),
-                        style: TextStyle(
-                            color: Color.fromRGBO(0, 103, 254, 50),
-                            fontSize: 20),
-                      ),
-                      subtitle: Text(snapshot.child("Date").value.toString(),
-                          style: TextStyle(
-                              color: Color.fromRGBO(0, 103, 254, 50),
-                              fontSize: 10)),
-                    );
-                  } else
-                    return Container();
-                },
-              ),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              query: dbR,
+              itemBuilder: (context, snapshot, animation, index) {
+                final title = snapshot.child("Project Name").value.toString();
+                if (searchFilter.text.isEmpty) {
+                  return ListTile(
+                    leading: Icon(
+                      Icons.verified_user_outlined,
+                      color: Color.fromRGBO(0, 103, 254, 50),
+                    ),
+                    trailing: PopupMenuButton(
+                      icon: Icon(Icons.more_vert_rounded),
+                      //color: Color.fromRGBO(0, 103, 254, 50),
+                      itemBuilder: (context) => [
+                        PopupMenuItem(value: 1,child: ListTile(
+                          leading: Icon(Icons.view_column_outlined),
+                          title: Text("View"),
+                        )),
 
+                      ],
+                    ),
+                    title: Text(
+                      snapshot.child("Project Name").value.toString(),
+                      style: TextStyle(
+                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),
+                    ),
+                    subtitle: Text(snapshot.child("Date").value.toString(),
+                        style: TextStyle(
+                            color: Color.fromRGBO(0, 103, 254, 50),
+                            fontSize: 10)),
+                  );
+                } else if (title
+                    .toString()
+                    .contains(searchFilter.text.toString())) {
+                  return ListTile(
+                    leading: Icon(
+                      Icons.verified_user_outlined,
+                      color: Color.fromRGBO(0, 103, 254, 50),
+                    ),
+                    trailing: PopupMenuButton(
+                      icon: Icon(Icons.more_vert_rounded),
+                      //color: Color.fromRGBO(0, 103, 254, 50),
+                      itemBuilder: (context) => [
+                        PopupMenuItem(value: 1,child: ListTile(
+                          leading: Icon(Icons.view_column_outlined),
+                          title: Text("View"),
+                        )),
+                      ],
+                    ),
+                    title: Text(
+                      snapshot.child("Project Name").value.toString(),
+                      style: TextStyle(
+                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),
+                    ),
+                    subtitle: Text(snapshot.child("Date").value.toString(),
+                        style: TextStyle(
+                            color: Color.fromRGBO(0, 103, 254, 50),
+                            fontSize: 10)),
+                  );
+                } else
+                  return Container();
+              },
+            ),
           ],
         ),
       ),
