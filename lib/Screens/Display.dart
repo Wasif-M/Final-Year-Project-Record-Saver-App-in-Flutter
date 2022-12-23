@@ -77,47 +77,50 @@ class _DisplayState extends State<Display> {
               SafeArea(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
-                    child: Expanded(
-                      flex: 3,
-                      child: FirebaseAnimatedList(
-                        shrinkWrap: true,
-                        scrollDirection:Axis.vertical,
-                        query: dbR,
-                        itemBuilder: (context, snapshot,
-                            animation, index) {
-                          final title =snapshot.child("Project Name").value.toString();
-                          if(searchFilter.text.isEmpty){
-                            return ListTile(
-                              leading: Icon(
-                                Icons.verified_user_outlined,
-                                color: Color.fromRGBO(0, 103, 254, 50),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child:  FirebaseAnimatedList(
+                                shrinkWrap: true,
+                                scrollDirection:Axis.vertical,
+                                query: dbR,
+                                itemBuilder: (context, snapshot,
+                                    animation, index) {
+                                  final title =snapshot.child("Project Name").value.toString();
+                                  if(searchFilter.text.isEmpty){
+                                    return ListTile(
+                                      leading: Icon(
+                                        Icons.verified_user_outlined,
+                                        color: Color.fromRGBO(0, 103, 254, 50),
+                                      ),
+                                      trailing: IconButton(icon: Icon(Icons.forward_sharp),color: Color.fromRGBO(0, 103, 254, 50),onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Records()));},),
+                                      title:
+                                      Text(snapshot.child("Project Name").value.toString(),style: TextStyle(
+                                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),),
+                                      subtitle: Text(snapshot.child("Date").value.toString(),style: TextStyle(
+                                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 10)),
+                                    );
+                                  }
+                                  else if(title.toString().contains(searchFilter.text.toString())){
+                                    return ListTile(
+                                      leading: Icon(
+                                        Icons.verified_user_outlined,
+                                        color: Color.fromRGBO(0, 103, 254, 50),
+                                      ),
+                                      trailing: IconButton(icon: Icon(Icons.forward_sharp),color: Color.fromRGBO(0, 103, 254, 50),onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Records()));},),
+                                      title:
+                                      Text(snapshot.child("Project Name").value.toString(),style: TextStyle(
+                                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),),
+                                      subtitle: Text(snapshot.child("Date").value.toString(),style: TextStyle(
+                                          color: Color.fromRGBO(0, 103, 254, 50), fontSize: 10)),
+                                    );
+                                  }
+                                  else
+                                    return Container();
+                                },
                               ),
-                              trailing: IconButton(icon: Icon(Icons.forward_sharp),color: Color.fromRGBO(0, 103, 254, 50),onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Records()));},),
-                              title:
-                              Text(snapshot.child("Project Name").value.toString(),style: TextStyle(
-                                  color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),),
-                              subtitle: Text(snapshot.child("Date").value.toString(),style: TextStyle(
-                                  color: Color.fromRGBO(0, 103, 254, 50), fontSize: 10)),
-                            );
-                          }
-                          else if(title.toString().contains(searchFilter.text.toString())){
-                            return ListTile(
-                              leading: Icon(
-                                Icons.verified_user_outlined,
-                                color: Color.fromRGBO(0, 103, 254, 50),
-                              ),
-                              trailing: IconButton(icon: Icon(Icons.forward_sharp),color: Color.fromRGBO(0, 103, 254, 50),onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Records()));},),
-                              title:
-                              Text(snapshot.child("Project Name").value.toString(),style: TextStyle(
-                                  color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),),
-                              subtitle: Text(snapshot.child("Date").value.toString(),style: TextStyle(
-                                  color: Color.fromRGBO(0, 103, 254, 50), fontSize: 10)),
-                            );
-                          }
-                          else
-                            return Container();
-                        },
-                      ),
+                          ),
+                      ],
                     ),
                   ),
 
