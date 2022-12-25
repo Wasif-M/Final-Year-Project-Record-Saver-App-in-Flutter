@@ -1,6 +1,7 @@
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:fyp_recordsaver/Screens/TeachersLogin.dart';
 import 'user.dart';
 import 'HomeScreen.dart';
 import 'Records.dart';
@@ -22,7 +23,7 @@ class _DisplayState extends State<Display> {
         actions: [
           TextButton(
               onPressed: () {
-                Navigator.pop(context,
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => WhoAreYou()));
               },
               child: Text(
@@ -30,14 +31,6 @@ class _DisplayState extends State<Display> {
                 style: TextStyle(color: Colors.white),
               ))
         ],
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          color: Colors.white,
-          onPressed: () {
-            Navigator.pop(
-                context, MaterialPageRoute(builder: (context) => HomeScreen()));
-          },
-        ),
         toolbarHeight: 60,
         title: Text(
           'All Records',
@@ -94,6 +87,10 @@ class _DisplayState extends State<Display> {
                         PopupMenuItem(value: 1,child: ListTile(
                           leading: Icon(Icons.view_column_outlined),
                           title: Text("View"),
+                          onTap: (){
+                            Navigator.pushReplacement(
+                                context, MaterialPageRoute(builder: (context) => Records()));
+                          },
                         )),
 
                       ],
@@ -123,6 +120,10 @@ class _DisplayState extends State<Display> {
                         PopupMenuItem(value: 1,child: ListTile(
                           leading: Icon(Icons.view_column_outlined),
                           title: Text("View"),
+                          onTap: (){
+                            Navigator.pushReplacement(
+                                context, MaterialPageRoute(builder: (context) => Records()));
+                          },
                         )),
                       ],
                     ),

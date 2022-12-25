@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {
 
                 });
-                Navigator.pop(context, MaterialPageRoute(builder: (context)=> WhoAreYou()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> WhoAreYou()));
               },
               child: Container(
                 alignment: Alignment.center,

@@ -15,14 +15,6 @@ class _RecordsState extends State<Records> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.white,
-            onPressed: () {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Display()));
-            },
-          ),
           toolbarHeight: 60,
           title: Text(
             'Record',

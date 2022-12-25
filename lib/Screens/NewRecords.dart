@@ -154,7 +154,7 @@ class _FormState extends State<Form> {
                       "Batch No":batch.text,
                     };
                     dbR.push().set(NewRecords);
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
                   },
                   child: Container(
                     alignment: Alignment.center,
