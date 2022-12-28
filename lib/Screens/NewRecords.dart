@@ -73,7 +73,7 @@ class _DataFillingState extends State<DataFilling> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextFormField(
                   validator: (projectName){
-                    if(projectName!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(projectName!)){
+                    if(projectName!.isEmpty ){
                       return "Enter Valid Project Name";
                     }
                     else
@@ -92,7 +92,7 @@ class _DataFillingState extends State<DataFilling> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextFormField(
                   validator: (supervisorName){
-                    if(supervisorName!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(supervisorName!)){
+                    if(supervisorName!.isEmpty ){
                       return "Enter Valid Supervisor Name";
                     }
                     else
@@ -110,13 +110,13 @@ class _DataFillingState extends State<DataFilling> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextFormField(
-                  validator: (batch){
-                    if(batch!.isEmpty || RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[9]{0,1}[-\s\./0-9]+$').hasMatch(batch)){
+                  /*validator: (batch){
+                    if(batch!.isEmpty ){
                       return "Enter Valid BatchNo";
                     }
                     else
                       return null;
-                  },
+                  },*/
                   controller: batch,
                     maxLines: 5, minLines: 1,
                   decoration: InputDecoration(
