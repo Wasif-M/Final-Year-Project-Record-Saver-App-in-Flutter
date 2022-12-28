@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Utils {
  void toastMessage(){
    Fluttertoast.showToast(
-       msg: "Email or Password is invalid",
+       msg: "Email or Password is invalid7",
        toastLength: Toast.LENGTH_SHORT,
        gravity: ToastGravity.CENTER,
        timeInSecForIosWeb: 1,

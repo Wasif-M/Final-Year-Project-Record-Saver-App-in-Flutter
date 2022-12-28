@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {
 
                 });
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> WhoAreYou()));
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> WhoAreYou()), (route) => false);
               },
               child: Container(
                 alignment: Alignment.center,
