@@ -3,6 +3,7 @@ import 'package:date_format/date_format.dart';
 import 'HomeScreen.dart';
 
 import 'package:firebase_database/firebase_database.dart';
+
 class NewRecords extends StatelessWidget {
   const NewRecords({Key? key}) : super(key: key);
 
@@ -12,7 +13,14 @@ class NewRecords extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          leading: IconButton(icon: Icon(Icons.arrow_back),color: Colors.white,onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));},),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.white,
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+          ),
           toolbarHeight: 60,
           title: Text(
             'New Records',
@@ -23,9 +31,9 @@ class NewRecords extends StatelessWidget {
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
-                )),
+              bottomLeft: Radius.circular(50),
+              bottomRight: Radius.circular(50),
+            )),
           ),
         ),
         backgroundColor: Colors.white,
@@ -34,6 +42,7 @@ class NewRecords extends StatelessWidget {
     );
   }
 }
+
 class DataFilling extends StatefulWidget {
   const DataFilling({Key? key}) : super(key: key);
 
@@ -42,18 +51,18 @@ class DataFilling extends StatefulWidget {
 }
 
 class _DataFillingState extends State<DataFilling> {
-  TextEditingController _date=TextEditingController();
-  var projectName=TextEditingController();
-  var supervisorName=TextEditingController();
-  var description=TextEditingController();
-  var batch=TextEditingController();
+  TextEditingController _date = TextEditingController();
+  var projectName = TextEditingController();
+  var supervisorName = TextEditingController();
+  var description = TextEditingController();
+  var batch = TextEditingController();
   late DatabaseReference dbR;
-  final formKey= GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    dbR= FirebaseDatabase.instance.ref().child("NewRecords");
+    dbR = FirebaseDatabase.instance.ref().child("NewRecords");
   }
 
   @override
@@ -67,90 +76,115 @@ class _DataFillingState extends State<DataFilling> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(height: 10),
-              Container(child: Image(image: AssetImage("assets/fill.jpg"),),),
+              Container(
+                child: Image(
+                  image: AssetImage("assets/fill.jpg"),
+                ),
+              ),
               SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextFormField(
-                  validator: (projectName){
-                    if(projectName!.isEmpty ){
-                      return "Enter Valid Project Name";
+                  validator: (projectName) {
+                    if (projectName!.isNotEmpty) {
+                      if (RegExp(r"^[a-zA-Z ]+$").hasMatch(projectName)) {
+                        return null;
+                      }
+                      return 'Invalid ProjectName';
+                    } else {
+                      return 'ProjectName required';
                     }
-                    else
-                      return null;
                   },
                   controller: projectName,
-                  maxLines: 5, minLines: 1,
+                  maxLines: 5,
+                  minLines: 1,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     labelText: "Project Title",
-                    hintText: "Enter Project Title",),
+                    hintText: "Enter Project Title",
+                  ),
                 ),
               ),
               SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextFormField(
-                  validator: (supervisorName){
-                    if(supervisorName!.isEmpty ){
-                      return "Enter Valid Supervisor Name";
+                  validator: (supervisorName) {
+                    if (supervisorName!.isNotEmpty) {
+                      if (RegExp(r"^[a-zA-Z ]+$").hasMatch(supervisorName)) {
+                        return null;
+                      }
+                      return 'Invalid SupervisorName';
+                    } else {
+                      return 'SupervisorName required';
                     }
-                    else
-                      return null;
                   },
                   controller: supervisorName,
-                  maxLines: 5, minLines: 1,
+                  maxLines: 5,
+                  minLines: 1,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     labelText: "Supervisor Name",
-                    hintText: "Enter Supervisor Name",),
+                    hintText: "Enter Supervisor Name",
+                  ),
                 ),
               ),
               SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextFormField(
-                  /*validator: (batch){
-                    if(batch!.isEmpty ){
-                      return "Enter Valid BatchNo";
+                  validator: (batch) {
+                    if (batch!.isNotEmpty) {
+                      if (RegExp(r"^[0-9]{11}$").hasMatch(batch)) {
+                        return null;
+                      }
+                      return 'Invalid BatchNo';
+                    } else {
+                      return 'BatchNo is required';
                     }
-                    else
-                      return null;
-                  },*/
+                  },
                   controller: batch,
-                    maxLines: 5, minLines: 1,
+                  maxLines: 5,
+                  minLines: 1,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     labelText: "Batch No",
-                    hintText: "Enter Batch No",),
+                    hintText: "Enter Batch No",
+                  ),
                 ),
               ),
               SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: TextField(
-                      controller: _date,
-
-                      decoration: InputDecoration(
-                          labelText: "Select Year",
-                          icon: Icon(Icons.calendar_today_rounded),
-                          hintText: "Group",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          )),
-                      onTap: () async {
-                        DateTime? pickeddate= await showDatePicker(context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(1966),
-                          lastDate: DateTime(2024),
-                        );
-                        if(pickeddate != null){
-                          setState(() {
-                            _date.text= formatDate(pickeddate, [yyyy, '-', mm, '-', dd]);
-                          });
-                        }
+                child: TextFormField(
+                    controller: _date,
+                    decoration: InputDecoration(
+                        labelText: "Select Year",
+                        icon: Icon(Icons.calendar_today_rounded),
+                        hintText: "Date",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        )),
+                    onTap: () async {
+                      DateTime? pickeddate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1966),
+                        lastDate: DateTime(2024),
+                      );
+                      if (pickeddate != null) {
+                        setState(() {
+                          _date.text =
+                              formatDate(pickeddate, [yyyy, '-', mm, '-', dd]);
+                        });
                       }
-                  ),
+                    }),
               ),
               SizedBox(height: 20),
               Container(
@@ -161,35 +195,50 @@ class _DataFillingState extends State<DataFilling> {
                   maxLines: 5,
                   minLines: 1,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     labelText: "Description",
-                    hintText: "Enter Project Description",),
+                    hintText: "Enter Project Description",
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: InkWell(
                   child: MaterialButton(
-                    onPressed: (){
-                      final isValidForm= formKey.currentState!.validate();
-                      if(isValidForm){
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                    onPressed: () {
+                      final isValidForm = formKey.currentState!.validate();
+                      if (isValidForm) {
+                        Navigator.pop(context,MaterialPageRoute(
+                        builder: (context) => HomeScreen()));
                       }
-                      Map<String,String> NewRecords= {
-                        "Project Name":projectName.text,
-                        "Supervisor Name":supervisorName.text,
-                        "Description":description.text,
+                      Map<String, String> NewRecords = {
+                        "Project Name": projectName.text,
+                        "Supervisor Name": supervisorName.text,
+                        "Description": description.text,
                         "Date": _date.text,
-                        "Batch No":batch.text,
+                        "Batch No": batch.text,
                       };
                       dbR.push().set(NewRecords);
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                      /*Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));*/
                     },
                     child: Container(
                       alignment: Alignment.center,
                       height: 40,
-                      decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(12)),
-                      child: Text('Save',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 20),),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20),
+                      ),
                     ),
                   ),
                 ),
