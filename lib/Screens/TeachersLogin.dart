@@ -92,7 +92,7 @@ class _teachersLoginState extends State<teachersLogin> {
                         validator: (passwordController){
                           if (passwordController!.isNotEmpty) {
                             if (passwordController.length < 8) {
-                              return 'Password must be at least 6 characters';
+                              return 'Password must be at least 8 characters';
                             }
                             return null;
                           } else {

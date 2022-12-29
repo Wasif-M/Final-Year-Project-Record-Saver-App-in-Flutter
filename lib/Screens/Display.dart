@@ -1,9 +1,7 @@
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:fyp_recordsaver/Screens/TeachersLogin.dart';
 import 'user.dart';
-import 'HomeScreen.dart';
 import 'Records.dart';
 
 class Display extends StatefulWidget {
@@ -121,7 +119,7 @@ class _DisplayState extends State<Display> {
                           leading: Icon(Icons.view_column_outlined),
                           title: Text("View"),
                           onTap: (){
-                            Navigator.pushReplacement(
+                            Navigator.pop(
                                 context, MaterialPageRoute(builder: (context) => Records()));
                           },
                         )),
