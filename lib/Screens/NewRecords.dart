@@ -139,7 +139,7 @@ class _DataFillingState extends State<DataFilling> {
                 child: TextFormField(
                   validator: (batch) {
                     if (batch!.isNotEmpty) {
-                      if (RegExp(r"^[0-9]{11}$").hasMatch(batch)) {
+                      if (RegExp(r"^[0-9]+$").hasMatch(batch)) {
                         return null;
                       }
                       return 'Invalid BatchNo';
@@ -210,7 +210,7 @@ class _DataFillingState extends State<DataFilling> {
                     onPressed: () {
                       final isValidForm = formKey.currentState!.validate();
                       if (isValidForm) {
-                        Navigator.pop(context,MaterialPageRoute(
+                        Navigator.pushReplacement(context,MaterialPageRoute(
                         builder: (context) => HomeScreen()));
                       }
                       Map<String, String> NewRecords = {
