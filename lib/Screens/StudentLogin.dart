@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:auth/auth.dart';
-import 'Display.dart';
+import 'StudentDisplay.dart';
 
 class studentInformation extends StatefulWidget {
-  const studentInformation({Key? key}) : super(key: key);
-
   @override
   State<studentInformation> createState() => _studentInformationState();
 }
@@ -30,7 +28,7 @@ class _studentInformationState extends State<studentInformation> {
         )
         .then((value) => {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Display())),
+                  context, MaterialPageRoute(builder: (context) => studentDisplay())),
             });
   }
 
