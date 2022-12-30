@@ -19,7 +19,7 @@ class _RecordsState extends State<Records> {
           actions: [
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.pop(context,
                       MaterialPageRoute(builder: (context) => Display()));
                 },
                 child: Text(
