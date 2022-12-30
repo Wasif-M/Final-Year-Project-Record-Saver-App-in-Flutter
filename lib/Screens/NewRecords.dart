@@ -166,6 +166,16 @@ class _DataFillingState extends State<DataFilling> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextFormField(
+                    validator: (_date) {
+                      if (_date!.isNotEmpty) {
+                        if (RegExp(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$").hasMatch(_date)) {
+                          return null;
+                        }
+                        return 'Invalid Date';
+                      } else {
+                        return 'Date is required';
+                      }
+                    },
                     controller: _date,
                     decoration: InputDecoration(
                         labelText: "Select Year",
@@ -179,7 +189,7 @@ class _DataFillingState extends State<DataFilling> {
                         context: context,
                         initialDate: DateTime.now(),
                         firstDate: DateTime(1966),
-                        lastDate: DateTime(2024),
+                        lastDate: DateTime(2028),
                       );
                       if (pickeddate != null) {
                         setState(() {
