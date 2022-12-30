@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyp_recordsaver/Screens/NewRecords.dart';
 import 'Display.dart';
 
 class Records extends StatefulWidget {
@@ -15,6 +16,17 @@ class _RecordsState extends State<Records> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Display()));
+                },
+                child: Text(
+                  'Save',
+                  style: TextStyle(color: Colors.white),
+                ))
+          ],
           toolbarHeight: 60,
           title: Text(
             'Record',
@@ -35,4 +47,3 @@ class _RecordsState extends State<Records> {
     );
   }
 }
-

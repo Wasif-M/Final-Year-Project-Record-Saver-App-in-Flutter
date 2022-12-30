@@ -1,6 +1,7 @@
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:fyp_recordsaver/Screens/NewRecords.dart';
 import 'user.dart';
 import 'Records.dart';
 
@@ -83,11 +84,18 @@ class _DisplayState extends State<Display> {
                       //color: Color.fromRGBO(0, 103, 254, 50),
                       itemBuilder: (context) => [
                         PopupMenuItem(value: 1,child: ListTile(
-                          leading: Icon(Icons.view_column_outlined),
+                          leading: Icon(Icons.remove_red_eye_sharp),
                           title: Text("View"),
                           onTap: (){
                             Navigator.pushReplacement(
                                 context, MaterialPageRoute(builder: (context) => Records()));
+                          },
+                        )),
+                        PopupMenuItem(value: 1,child: ListTile(
+                          leading: Icon(Icons.delete),
+                          title: Text("Delete"),
+                          onTap: (){
+                            //dbR.child(NewRecords['key']).remove();
                           },
                         )),
 
@@ -116,11 +124,18 @@ class _DisplayState extends State<Display> {
                       //color: Color.fromRGBO(0, 103, 254, 50),
                       itemBuilder: (context) => [
                         PopupMenuItem(value: 1,child: ListTile(
-                          leading: Icon(Icons.view_column_outlined),
+                          leading: Icon(Icons.remove_red_eye_rounded),
                           title: Text("View"),
                           onTap: (){
                             Navigator.pop(
                                 context, MaterialPageRoute(builder: (context) => Records()));
+                          },
+                        )),
+                        PopupMenuItem(value: 1,child: ListTile(
+                          leading: Icon(Icons.delete),
+                          title: Text("Delete"),
+                          onTap: (){
+
                           },
                         )),
                       ],
