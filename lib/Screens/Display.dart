@@ -19,17 +19,6 @@ class _DisplayState extends State<Display> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          TextButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WhoAreYou()));
-              },
-              child: Text(
-                'Logout',
-                style: TextStyle(color: Colors.white),
-              ))
-        ],
         toolbarHeight: 60,
         title: Text(
           'All Records',
@@ -129,7 +118,7 @@ class _DisplayState extends State<Display> {
                           leading: Icon(Icons.remove_red_eye_rounded),
                           title: Text("View"),
                           onTap: (){
-                            Navigator.pop(
+                            Navigator.push(
                                 context, MaterialPageRoute(builder: (context) => Records()));
                           },
                         )),

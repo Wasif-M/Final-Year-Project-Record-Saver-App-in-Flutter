@@ -120,7 +120,7 @@ class _studentDisplayState extends State<studentDisplay> {
                           leading: Icon(Icons.remove_red_eye_rounded),
                           title: Text("View"),
                           onTap: (){
-                            Navigator.pop(
+                            Navigator.push(
                                 context, MaterialPageRoute(builder: (context) => Records()));
                           },
                         )),

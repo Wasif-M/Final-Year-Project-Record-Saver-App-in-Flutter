@@ -75,7 +75,7 @@ class _DataFillingState extends State<DataFilling> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: 10),
+              //SizedBox(height: 10),
               Container(
                 child: Image(
                   image: AssetImage("assets/fill.jpg"),
@@ -99,6 +99,7 @@ class _DataFillingState extends State<DataFilling> {
                   maxLines: 5,
                   minLines: 1,
                   decoration: InputDecoration(
+                    icon: Icon(Icons.title),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -125,6 +126,7 @@ class _DataFillingState extends State<DataFilling> {
                   maxLines: 5,
                   minLines: 1,
                   decoration: InputDecoration(
+                    icon: Icon(Icons.person),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -151,6 +153,7 @@ class _DataFillingState extends State<DataFilling> {
                   maxLines: 5,
                   minLines: 1,
                   decoration: InputDecoration(
+                    icon: Icon(Icons.numbers_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -195,6 +198,7 @@ class _DataFillingState extends State<DataFilling> {
                   maxLines: 5,
                   minLines: 1,
                   decoration: InputDecoration(
+                    icon: Icon(Icons.description_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -203,6 +207,7 @@ class _DataFillingState extends State<DataFilling> {
                   ),
                 ),
               ),
+              SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: InkWell(
