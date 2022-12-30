@@ -95,7 +95,9 @@ class _DisplayState extends State<Display> {
                           leading: Icon(Icons.delete),
                           title: Text("Delete"),
                           onTap: (){
-                            //dbR.child(NewRecords['key']).remove();
+                            var key=snapshot.key;
+                            print("Delete Id" +key.toString());
+                            _delete(key);
                           },
                         )),
 
@@ -135,7 +137,9 @@ class _DisplayState extends State<Display> {
                           leading: Icon(Icons.delete),
                           title: Text("Delete"),
                           onTap: (){
-
+                            var key=snapshot.key;
+                            print("Delete Id" +key.toString());
+                            _delete(key);
                           },
                         )),
                       ],
@@ -158,5 +162,8 @@ class _DisplayState extends State<Display> {
         ),
       ),
     );
+  }
+  Future<void> _delete(var key )async {
+    await dbR.child(key).remove();
   }
 }
