@@ -46,7 +46,7 @@ class _teachersLoginState extends State<teachersLogin> {
               Container(
 
                 height:
-                size.height * .40, // height of container is total 45% of height
+                size.height * .40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(50),

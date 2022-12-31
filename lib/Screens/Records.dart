@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fyp_recordsaver/Screens/NewRecords.dart';
 import 'Display.dart';
 
 class Records extends StatefulWidget {
