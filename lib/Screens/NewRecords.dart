@@ -202,7 +202,18 @@ class _DataFillingState extends State<DataFilling> {
               SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: TextField(
+                child: TextFormField(
+                  validator: (description) {
+                    if (description!.isNotEmpty) {
+                      if (RegExp(r"^[a-zA-Z]*$").hasMatch(description)) {
+                        return null;
+                      }
+                      return 'Invalid Description';
+                    } else {
+                      return 'Description is required';
+                    }
+                  },
+
                   controller: description,
                   cursorHeight: 20,
                   maxLines: 5,
@@ -225,17 +236,17 @@ class _DataFillingState extends State<DataFilling> {
                     onPressed: () {
                       final isValidForm = formKey.currentState!.validate();
                       if (isValidForm) {
+                        Map<String, String> NewRecords = {
+                          "Project Name": projectName.text,
+                          "Supervisor Name": supervisorName.text,
+                          "Description": description.text,
+                          "Date": _date.text,
+                          "Batch No": batch.text,
+                        };
+                        dbR.push().set(NewRecords);
                         Navigator.pushReplacement(context,MaterialPageRoute(
                         builder: (context) => HomeScreen()));
                       }
-                      Map<String, String> NewRecords = {
-                        "Project Name": projectName.text,
-                        "Supervisor Name": supervisorName.text,
-                        "Description": description.text,
-                        "Date": _date.text,
-                        "Batch No": batch.text,
-                      };
-                      dbR.push().set(NewRecords);
                     },
                     child: Container(
                       alignment: Alignment.center,
