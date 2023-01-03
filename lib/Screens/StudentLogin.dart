@@ -27,7 +27,7 @@ class _studentInformationState extends State<studentInformation> {
           password: passwordController.text.trim(),
         )
         .then((value) => {
-              Navigator.push(
+              Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => studentDisplay())),
             });
   }
@@ -105,7 +105,13 @@ class _studentInformationState extends State<studentInformation> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            suffixIcon: Icon(Icons.remove_red_eye),
+                            prefixIcon: Icon(Icons.lock),
+                            suffixIcon: GestureDetector(onTap: (){
+                              setState(() {
+                                _isHidden=! _isHidden;
+                              });
+                            },
+                              child: Icon(_isHidden ? Icons.visibility :Icons.visibility_off),),
                             labelText: "Enter Password",
                             hintText: "Password",
                           ),

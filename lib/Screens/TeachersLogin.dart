@@ -25,12 +25,10 @@ class _teachersLoginState extends State<teachersLogin> {
       loading=true;
     });
     _auth.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(),).then((value){
-      Navigator.push(context,
+      Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => HomeScreen()));
     });
   }
-
-
   bool _isHidden = true;
   @override
   Widget build(BuildContext context) {
@@ -80,7 +78,7 @@ class _teachersLoginState extends State<teachersLogin> {
                         controller: emailController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                          suffixIcon: Icon(Icons.email),
+                          prefixIcon: Icon(Icons.email),
                           labelText: "Email",
                           hintText: "Enter Student Email",),
                       ),
@@ -103,7 +101,13 @@ class _teachersLoginState extends State<teachersLogin> {
                         obscureText: _isHidden,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),),
-                          suffixIcon: Icon(Icons.remove_red_eye),
+                          prefixIcon: Icon(Icons.lock),
+                          suffixIcon: GestureDetector(onTap: (){
+                            setState(() {
+                              _isHidden=! _isHidden;
+                            });
+                          },
+                          child: Icon(_isHidden ? Icons.visibility :Icons.visibility_off),),
                           labelText: "Enter Password",
                           hintText: "Password",),
                       ),
