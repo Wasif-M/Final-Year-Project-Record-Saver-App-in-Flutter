@@ -244,8 +244,7 @@ class _DataFillingState extends State<DataFilling> {
                           "Batch No": batch.text,
                         };
                         dbR.push().set(NewRecords);
-                        Navigator.pushReplacement(context,MaterialPageRoute(
-                        builder: (context) => HomeScreen()));
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> HomeScreen()), (route) => false);
                       }
                     },
                     child: Container(
