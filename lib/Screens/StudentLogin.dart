@@ -13,7 +13,6 @@ class _studentInformationState extends State<studentInformation> {
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool _isHidden = true;
-  bool _loading =false;
   @override
   void dispose() {
     emailController.dispose();
@@ -125,10 +124,6 @@ class _studentInformationState extends State<studentInformation> {
                       child: InkWell(
                         child: MaterialButton(
                           onPressed: () {
-                            setState(() {
-                              _loading=true;
-                            });
-                            Future.delayed(Duration(seconds: 15));
                             final isValidForm = formKey.currentState!.validate();
                             if (isValidForm) {
                               login();
@@ -140,7 +135,7 @@ class _studentInformationState extends State<studentInformation> {
                             decoration: BoxDecoration(
                                 color: Colors.blue,
                                 borderRadius: BorderRadius.circular(12)),
-                            child: _loading ? CircularProgressIndicator(color: Colors.white,):Text(
+                            child: Text(
                               'Login',
                               style: TextStyle(
                                   color: Colors.white,
