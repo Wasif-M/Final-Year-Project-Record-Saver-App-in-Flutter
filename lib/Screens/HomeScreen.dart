@@ -111,10 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.only(top: 600),
             child: MaterialButton(
               onPressed: () {
-                setState(() {
-
-                });
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> WhoAreYou()), (route) => false);
+                Navigator.pop(context);
               },
               child: Container(
                 alignment: Alignment.center,

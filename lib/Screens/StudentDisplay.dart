@@ -21,7 +21,7 @@ class _studentDisplayState extends State<studentDisplay> {
         actions: [
           TextButton(
               onPressed: () {
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> WhoAreYou()), (route) => false);
+                Navigator.pop(context);
               },
               child: Text(
                 'Logout',
