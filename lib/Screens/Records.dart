@@ -1,8 +1,5 @@
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp_recordsaver/Key.dart';
-import 'Display.dart';
-import 'Key.dart';
 import 'package:firebase_database/firebase_database.dart';
 class Records extends StatefulWidget {
   const Records({Key? key}) : super(key: key);
@@ -21,8 +18,7 @@ class _RecordsState extends State<Records> {
           actions: [
             TextButton(
                 onPressed: () {
-                  Navigator.pop(context,
-                      MaterialPageRoute(builder: (context) => Display()));
+                  Navigator.pop(context);
                 },
                 child: Text(
                   'Save',
@@ -45,6 +41,7 @@ class _RecordsState extends State<Records> {
           ),
         ),
         backgroundColor: Colors.white,
+        body: ViewRecords(),
       ),
     );
   }
@@ -64,15 +61,13 @@ class _ViewRecordsState extends State<ViewRecords> {
   var description = TextEditingController();
   var batch = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool _loading =false;
 
-  /*void initState() {
+  void initState() {
     super.initState();
     dbR = FirebaseDatabase.instance.ref().child("NewRecords");
-  }*/
-  void showData () async {
-    DataSnapshot snapshot= await dbR.child(widget.Useful).get();
+  }
+  void showData (var key) async {
+    DataSnapshot snapshot= await dbR.child(key).get();
   }
   @override
   Widget build(BuildContext context) {
@@ -93,6 +88,7 @@ class _ViewRecordsState extends State<ViewRecords> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
+                      labelText: "Project Title"
                   ),
                 ),
               ),
@@ -105,6 +101,7 @@ class _ViewRecordsState extends State<ViewRecords> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
+                      labelText: "Supervisor Name"
                   ),
                 ),
               ),
@@ -117,6 +114,7 @@ class _ViewRecordsState extends State<ViewRecords> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
+                      labelText: "Batch No",
                   ),
                 ),
               ),
@@ -129,6 +127,7 @@ class _ViewRecordsState extends State<ViewRecords> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
+                      labelText: "Date"
                   ),
                 ),
               ),
@@ -140,6 +139,7 @@ class _ViewRecordsState extends State<ViewRecords> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
+                      labelText: "Description"
                   ),
 
                   controller: description,

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:fyp_recordsaver/Screens/NewRecords.dart';
 import 'Records.dart';
 class Display extends StatefulWidget {
   const Display({Key? key}) : super(key: key);
@@ -60,7 +61,6 @@ class _DisplayState extends State<Display> {
               scrollDirection: Axis.vertical,
               query: dbR,
               itemBuilder: (context, snapshot, animation, index) {
-                var key= snapshot.key;
                 final title = snapshot.child("Project Name").value.toString();
                 if (searchFilter.text.isEmpty) {
                   return ListTile(
