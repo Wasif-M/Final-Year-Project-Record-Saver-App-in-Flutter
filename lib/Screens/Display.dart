@@ -60,6 +60,7 @@ class _DisplayState extends State<Display> {
               scrollDirection: Axis.vertical,
               query: dbR,
               itemBuilder: (context, snapshot, animation, index) {
+                var key= snapshot.key;
                 final title = snapshot.child("Project Name").value.toString();
                 if (searchFilter.text.isEmpty) {
                   return ListTile(
