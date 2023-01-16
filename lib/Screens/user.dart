@@ -41,7 +41,7 @@ class _WhoAreYouState extends State<WhoAreYou> {
                       minWidth: 20,
                       onPressed: (){
 
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> teachersLogin()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> teachersLogin())); //this line will push the user to teacher login Screen
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -62,7 +62,7 @@ class _WhoAreYouState extends State<WhoAreYou> {
                     child: MaterialButton(
                       onPressed: (){
 
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> studentInformation()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> studentInformation())); //After scuessful executing this line user will navigate to student login screen
                       },
                       child: Container(
                         decoration: BoxDecoration(
