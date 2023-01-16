@@ -1,6 +1,6 @@
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+
 class Records extends StatefulWidget {
   const Records({Key? key}) : super(key: key);
 
@@ -56,26 +56,34 @@ class ViewRecords extends StatefulWidget {
 class _ViewRecordsState extends State<ViewRecords> {
   late DatabaseReference dbR;
   TextEditingController _date = TextEditingController();
-  var projectName = TextEditingController();
-  var supervisorName = TextEditingController();
-  var description = TextEditingController();
-  var batch = TextEditingController();
+  TextEditingController projectName = TextEditingController();
+  TextEditingController supervisorName = TextEditingController();
+  TextEditingController description = TextEditingController();
+  TextEditingController batch = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  void initState() {
+  /*void initState() {
     super.initState();
     dbR = FirebaseDatabase.instance.ref().child("NewRecords");
+    showData();
   }
-  void showData (var key) async {
-    DataSnapshot snapshot= await dbR.child(key).get();
-  }
+  void showData () async {
+    DataSnapshot snapshot=await dbR.child(dbR.key.toString()).get();
+    Map<dynamic,dynamic> NewRecords = snapshot.value as Map;
+      projectName.text=NewRecords['Project Name'];
+      supervisorName.text=NewRecords['Supervisor Name'];
+      _date.text=NewRecords['Date'];
+      description.text=NewRecords['Description'];
+      batch.text=NewRecords['Batch'];
+
+  }*/
   @override
   Widget build(BuildContext context) {
     return  Padding(
       padding: const EdgeInsets.all(3.0),
       child: SingleChildScrollView(
         child: Form(
-          key: formKey,
+          //key: formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -146,7 +154,30 @@ class _ViewRecordsState extends State<ViewRecords> {
 
                 ),
               ),
-              SizedBox(height: 15)
+              SizedBox(height: 15),
+              /*MaterialButton(
+                onPressed: () {
+
+                  Map<String, String> NewRecords = {
+                    "Project Name": projectName.text,
+                    "Supervisor Name": supervisorName.text,
+                    "Description": description.text,
+                    "Date": _date.text,
+                    "Batch No": batch.text,
+                  };
+                  dbR.child(NewRecords.keys.toString()).update(NewRecords)
+                      .then((value) => {
+                    Navigator.pop(context)
+                  });
+
+
+                },
+                child: const Text('Update Data'),
+                color: Colors.blue,
+                textColor: Colors.white,
+                minWidth: 300,
+                height: 40,
+              ),*/
             ],
           ),
         ),

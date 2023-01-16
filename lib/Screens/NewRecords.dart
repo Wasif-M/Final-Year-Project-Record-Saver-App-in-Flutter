@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'HomeScreen.dart';
-
 import 'package:firebase_database/firebase_database.dart';
-
 class NewRecords extends StatelessWidget {
   const NewRecords({Key? key}) : super(key: key);
 
