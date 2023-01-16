@@ -51,10 +51,10 @@ class DataFilling extends StatefulWidget {
 
 class _DataFillingState extends State<DataFilling> {
   TextEditingController _date = TextEditingController();
-  var projectName = TextEditingController();
-  var supervisorName = TextEditingController();
-  var description = TextEditingController();
-  var batch = TextEditingController();
+  TextEditingController projectName = TextEditingController();
+  TextEditingController supervisorName = TextEditingController();
+  TextEditingController description = TextEditingController();
+  TextEditingController batch = TextEditingController();
   late DatabaseReference dbR;
   final formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
