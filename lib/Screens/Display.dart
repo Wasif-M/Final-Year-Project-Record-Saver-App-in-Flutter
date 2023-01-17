@@ -73,14 +73,6 @@ class _DisplayState extends State<Display> {
                       //color: Color.fromRGBO(0, 103, 254, 50),
                       itemBuilder: (context) => [
                         PopupMenuItem(value: 1,child: ListTile(
-                          leading: Icon(Icons.remove_red_eye_sharp),
-                          title: Text("View"),
-                          onTap: (){
-                            Navigator.pushReplacement(
-                                context, MaterialPageRoute(builder: (context) => Records()));
-                          },
-                        )),
-                        PopupMenuItem(value: 1,child: ListTile(
                           leading: Icon(Icons.delete),
                           title: Text("Delete"),
                           onTap: (){
@@ -97,10 +89,27 @@ class _DisplayState extends State<Display> {
                       style: TextStyle(
                           color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),
                     ),
-                    subtitle: Text(snapshot.child("Date").value.toString(),
-                        style: TextStyle(
-                            color: Color.fromRGBO(0, 103, 254, 50),
-                            fontSize: 10)),
+                    subtitle: Column(
+                      children: [
+                        Text(snapshot.child("Supervisor Name").value.toString(),
+                            style: TextStyle(
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+                        Text(snapshot.child("Batch No").value.toString(),
+                            style: TextStyle(
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+                        Text(snapshot.child("Description").value.toString(),
+                            style: TextStyle(
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+                        Text(snapshot.child("Date").value.toString(),
+                            style: TextStyle(
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+
+                      ],
+                    )
                   );
                 } else if (title
                     .toString()
@@ -114,14 +123,6 @@ class _DisplayState extends State<Display> {
                       icon: Icon(Icons.more_vert_rounded),
                       //color: Color.fromRGBO(0, 103, 254, 50),
                       itemBuilder: (context) => [
-                        PopupMenuItem(value: 1,child: ListTile(
-                          leading: Icon(Icons.remove_red_eye_rounded),
-                          title: Text("View"),
-                          onTap: (){
-                            Navigator.push(
-                                context, MaterialPageRoute(builder: (context) => Records()));
-                          },
-                        )),
                         PopupMenuItem(value: 1,child: ListTile(
                           leading: Icon(Icons.delete),
                           title: Text("Delete"),
@@ -138,10 +139,26 @@ class _DisplayState extends State<Display> {
                       style: TextStyle(
                           color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),
                     ),
-                    subtitle: Text(snapshot.child("Date").value.toString(),
-                        style: TextStyle(
-                            color: Color.fromRGBO(0, 103, 254, 50),
-                            fontSize: 10)),
+                    subtitle: Column(
+                      children: [
+                        Text(snapshot.child("Supervisor Name").value.toString(),
+                            style: TextStyle(
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+                        Text(snapshot.child("Batch No").value.toString(),
+                            style: TextStyle(
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+                        Text(snapshot.child("Description").value.toString(),
+                            style: TextStyle(
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+                        Text(snapshot.child("Date").value.toString(),
+                            style: TextStyle(
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+                      ],
+                    )
                   );
                 } else
                   return Container();

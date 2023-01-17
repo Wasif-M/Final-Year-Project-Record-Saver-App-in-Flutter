@@ -7,6 +7,7 @@ class studentDisplay extends StatefulWidget {
   const studentDisplay({Key? key}) : super(key: key);
 
   @override
+
   State<studentDisplay> createState() => _studentDisplayState();
 }
 
@@ -63,6 +64,7 @@ class _studentDisplayState extends State<studentDisplay> {
                 },
               ),
             ),
+
             FirebaseAnimatedList(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -76,30 +78,41 @@ class _studentDisplayState extends State<studentDisplay> {
                       Icons.verified_user_outlined,
                       color: Color.fromRGBO(0, 103, 254, 50),
                     ),
-                    trailing: PopupMenuButton(
-                      icon: Icon(Icons.more_vert_rounded),
-                      //color: Color.fromRGBO(0, 103, 254, 50),
-                      itemBuilder: (context) => [
-                        PopupMenuItem(value: 1,child: ListTile(
-                          leading: Icon(Icons.remove_red_eye_sharp),
-                          title: Text("View"),
-                          onTap: (){
-                            Navigator.pushReplacement(
-                                context, MaterialPageRoute(builder: (context) => Records()));
-                          },
-                        )),
-
-                      ],
-                    ),
+                    trailing: Icon(Icons.save_alt,color: Color.fromRGBO(0, 103, 254, 50),),
                     title: Text(
                       snapshot.child("Project Name").value.toString(),
                       style: TextStyle(
                           color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),
                     ),
-                    subtitle: Text(snapshot.child("Date").value.toString(),
+                    subtitle:Column(
+                      children: [
+                        Text(snapshot.child("Supervisor Name").value.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 17)),
+                        Text(snapshot.child("Batch No").value.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+                        Text(snapshot.child("Description").value.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 13)),
+                        Text(snapshot.child("Date").value.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 10)),
+
+                      ],
+                    ) /*Text(snapshot.child("Date").value.toString(),
                         style: TextStyle(
                             color: Color.fromRGBO(0, 103, 254, 50),
-                            fontSize: 10)),
+                            fontSize: 10)),*/
+
                   );
                 } else if (title
                     .toString()
@@ -128,10 +141,31 @@ class _studentDisplayState extends State<studentDisplay> {
                       style: TextStyle(
                           color: Color.fromRGBO(0, 103, 254, 50), fontSize: 20),
                     ),
-                    subtitle: Text(snapshot.child("Date").value.toString(),
-                        style: TextStyle(
-                            color: Color.fromRGBO(0, 103, 254, 50),
-                            fontSize: 10)),
+                    subtitle: Column(
+                      children: [
+                        Text(snapshot.child("Supervisor Name").value.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 17)),
+                        Text(snapshot.child("Batch No").value.toString(),
+                            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 15)),
+                        Text(snapshot.child("Discription").value.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 13)),
+                        Text(snapshot.child("Date").value.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 10)),
+
+                      ],
+                    )
                   );
                 } else
                   return Container();
