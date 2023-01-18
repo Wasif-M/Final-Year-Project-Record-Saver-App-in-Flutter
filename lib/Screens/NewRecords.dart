@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
@@ -246,7 +245,7 @@ class _DataFillingState extends State<DataFilling> {
                         };
                         dbR.push().set(NewRecords);
 
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> HomeScreen()), (route) => false);
+                        Navigator.pop(context);
                       }
                     },
                     child: Container(

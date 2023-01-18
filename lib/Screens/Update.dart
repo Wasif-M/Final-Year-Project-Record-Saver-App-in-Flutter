@@ -2,10 +2,10 @@ import 'package:date_format/date_format.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/Screens/Display.dart';
-import 'dart:async';
+import 'package:fyp_recordsaver/Screens/HomeScreen.dart';
 
 class Update extends StatefulWidget {
-  late String recordsKey="";
+  late String recordsKey;
 
  Update({required this.recordsKey});
 
@@ -147,9 +147,15 @@ class _UpdateState extends State<Update> {
                   child: InkWell(
                     child: MaterialButton(
                       onPressed: () {
-                        getData();
-                        //dbR.child(widget.recordsKey).update(NewRecords).then((value) => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const Display())),);
-                          //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> const Display()),);
+                        Map<String, String> NewRecords = {
+                          "Project Name": projectName.text,
+                          "Supervisor Name": supervisorName.text,
+                          "Description": description.text,
+                          "Date": _date.text,
+                          "Batch No": batch.text,
+                        };
+                        dbR.child(widget.recordsKey).update(NewRecords).then((value) => {Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()))});
                       },
                       child: Container(
                         alignment: Alignment.center,
@@ -177,20 +183,12 @@ class _UpdateState extends State<Update> {
   }
   void getData() async{
     DataSnapshot snapshot=await dbR.child(widget.recordsKey).get();
-    Map<String,dynamic> NewRecords=snapshot.value as Map<String,dynamic>;
+    Map NewRecords=snapshot.value as Map;
     projectName.text=NewRecords["Project Name"];
     supervisorName.text=NewRecords["Supervisor Name"];
     _date.text=NewRecords["Date"];
     batch.text=NewRecords['Batch No'];
     description.text=NewRecords['Description'];
-    /*Map<String, String> NewRecords = {
-      "Project Name": projectName.text,
-      "Supervisor Name": supervisorName.text,
-      "Description": description.text,
-      "Date": _date.text,
-      "Batch No": batch.text,
-    };*/
-    dbR.child(widget.recordsKey).update(NewRecords).then((value) => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const Display())),);
   }
 }
 

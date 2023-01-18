@@ -94,11 +94,6 @@ class _DisplayState extends State<Display> {
                                   MaterialPageRoute(builder: (context) => Update(recordsKey: NewRecords['key'],)),
                                       (route) => false);
                             });
-                            /*setState(() {
-                              Navigator.of(context).pushAndRemoveUntil(newRoute,  => false)
-                              //Navigator.of(context).pushNamedAndRemoveUntil('/screen4', (Route<dynamic> route) => false);
-                              //Navigator.push(context,MaterialPageRoute(builder: (_)=>Update(recordsKey: NewRecords['key'],)));
-                            });*/
 
                           },
                         )),
