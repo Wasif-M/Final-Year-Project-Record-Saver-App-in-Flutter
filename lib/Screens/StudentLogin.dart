@@ -27,8 +27,7 @@ class _studentInformationState extends State<studentInformation> {
           password: passwordController.text.trim(),
         )
         .then((value) => {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const studentDisplay())),
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const studentDisplay())),
             });
   }
 
@@ -91,7 +90,7 @@ class _studentInformationState extends State<studentInformation> {
                               borderRadius: BorderRadius.circular(12)),
                           suffixIcon: Icon(Icons.email),
                           labelText: "Email",
-                          hintText: "Enter Student Email",
+                          hintText: "gmail@.com",
                         ),
                       ),
                     ),

@@ -89,7 +89,7 @@ class _teachersLoginState extends State<teachersLogin> {
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                           prefixIcon: Icon(Icons.email),
                           labelText: "Email",
-                          hintText: "Enter Student Email",),
+                          hintText: "gmail@.com",),
                       ),
                     ),
                     SizedBox(height: 15),

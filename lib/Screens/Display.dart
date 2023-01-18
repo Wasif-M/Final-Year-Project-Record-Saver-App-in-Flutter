@@ -4,6 +4,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fyp_recordsaver/Screens/NewRecords.dart';
+import 'package:fyp_recordsaver/Screens/Update.dart';
 import 'Records.dart';
 class Display extends StatefulWidget {
   const Display({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class Display extends StatefulWidget {
 class _DisplayState extends State<Display> {
   final dbR = FirebaseDatabase.instance.ref("NewRecords");
   final searchFilter = TextEditingController();
+  final update = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +62,9 @@ class _DisplayState extends State<Display> {
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               query: dbR,
-              itemBuilder: (context, snapshot, animation, index) {
+              itemBuilder: (context, snapshot, animation, int index) {
+                Map  NewRecords=snapshot.value as Map;
+                NewRecords['key']=snapshot.key;
                 final title = snapshot.child("Project Name").value.toString();
                 if (searchFilter.text.isEmpty) {
                   return ListTile(
@@ -79,6 +83,23 @@ class _DisplayState extends State<Display> {
                             var key=snapshot.key;
                             print("Delete Id" +key.toString());
                             _delete(key);
+                          },
+                        )),
+                        PopupMenuItem(value: 1,child: ListTile(
+                          leading: Icon(Icons.edit),
+                          title: Text("Edit"),
+                          onTap: (){
+                            setState(() {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(builder: (context) => Update(recordsKey: NewRecords['key'],)),
+                                      (route) => false);
+                            });
+                            /*setState(() {
+                              Navigator.of(context).pushAndRemoveUntil(newRoute,  => false)
+                              //Navigator.of(context).pushNamedAndRemoveUntil('/screen4', (Route<dynamic> route) => false);
+                              //Navigator.push(context,MaterialPageRoute(builder: (_)=>Update(recordsKey: NewRecords['key'],)));
+                            });*/
+
                           },
                         )),
 
@@ -131,6 +152,16 @@ class _DisplayState extends State<Display> {
                             var key=snapshot.key;
                             print("Delete Id" +key.toString());
                             _delete(key);
+                          },
+                        )),
+                        PopupMenuItem(value: 1,child: ListTile(
+                          leading: Icon(Icons.edit),
+                          title: Text("Edit"),
+                          onTap: (){
+                            setState(() {
+                              Navigator.push(context,MaterialPageRoute(builder: (_)=>Update(recordsKey: NewRecords['key'],)));
+                            });
+                            //getData(key);
                           },
                         )),
                       ],
