@@ -27,8 +27,8 @@ class _studentInformationState extends State<studentInformation> {
           password: passwordController.text.trim(),
         )
         .then((value) => {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => studentDisplay())),
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => const studentDisplay())),
             });
   }
 
@@ -56,11 +56,21 @@ class _studentInformationState extends State<studentInformation> {
                         image: AssetImage('assets/login.jpg'),
                       )),
                 ),
-              SizedBox(height: 10),
+
+              SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(top: 270),
                 child: Column(
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 14.0),
+                      child: Center(
+                        child: Container(
+                          child: Text("Student Login",style: TextStyle(color: Color.fromRGBO(0, 103, 254, 50),fontSize: 25,fontWeight: FontWeight.w800),),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: TextFormField(
@@ -143,17 +153,6 @@ class _studentInformationState extends State<studentInformation> {
                                   fontSize: 20),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Student Login",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromRGBO(100, 165, 255, 50),
-                          fontSize: 25,
-                          fontWeight: FontWeight.w800,
                         ),
                       ),
                     ),

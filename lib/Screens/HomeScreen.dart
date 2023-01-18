@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Display()));
+                                builder: (BuildContext context) => const Display()));
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => NewRecords()));
+                                builder: (BuildContext context) => const NewRecords()));
                       },
                       child: Container(
                         decoration: BoxDecoration(

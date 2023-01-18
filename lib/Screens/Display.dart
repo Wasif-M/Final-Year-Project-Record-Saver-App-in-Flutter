@@ -91,22 +91,23 @@ class _DisplayState extends State<Display> {
                     ),
                     subtitle: Column(
                       children: [
-                        Text(snapshot.child("Supervisor Name").value.toString(),
+                        Text("Supervisor: "+snapshot.child("Supervisor Name").value.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 16)),
+                        Text("Bacth No:" +snapshot.child("Batch No").value.toString(),
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 103, 254, 50),
                                 fontSize: 15)),
-                        Text(snapshot.child("Batch No").value.toString(),
+                        Text("Description: "+snapshot.child("Description").value.toString(),
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 103, 254, 50),
-                                fontSize: 15)),
-                        Text(snapshot.child("Description").value.toString(),
+                                fontSize: 13)),
+                        Text("Year: "+snapshot.child("Date").value.toString(),
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 103, 254, 50),
-                                fontSize: 15)),
-                        Text(snapshot.child("Date").value.toString(),
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 103, 254, 50),
-                                fontSize: 15)),
+                                fontSize: 10)),
 
                       ],
                     )
@@ -141,22 +142,24 @@ class _DisplayState extends State<Display> {
                     ),
                     subtitle: Column(
                       children: [
-                        Text(snapshot.child("Supervisor Name").value.toString(),
+                        Text("Supervisor: "+snapshot.child("Supervisor Name").value.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(0, 103, 254, 50),
+                                fontSize: 16)),
+                        Text("Bacth No:" +snapshot.child("Batch No").value.toString(),
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 103, 254, 50),
                                 fontSize: 15)),
-                        Text(snapshot.child("Batch No").value.toString(),
+                        Text("Description: "+snapshot.child("Description").value.toString(),
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 103, 254, 50),
-                                fontSize: 15)),
-                        Text(snapshot.child("Description").value.toString(),
+                                fontSize: 13)),
+                        Text("Year: "+snapshot.child("Date").value.toString(),
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 103, 254, 50),
-                                fontSize: 15)),
-                        Text(snapshot.child("Date").value.toString(),
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 103, 254, 50),
-                                fontSize: 15)),
+                                fontSize: 10)),
+
                       ],
                     )
                   );

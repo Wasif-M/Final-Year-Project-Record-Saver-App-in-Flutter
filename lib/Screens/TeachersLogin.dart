@@ -26,7 +26,7 @@ class _teachersLoginState extends State<teachersLogin> {
     });
     _auth.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(),).then((value){
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => HomeScreen()));
+          MaterialPageRoute(builder: (BuildContext context) => const HomeScreen()));
     });
   }
   bool _isHidden = true;
@@ -57,11 +57,20 @@ class _teachersLoginState extends State<teachersLogin> {
                     )),
               ),
 
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(top: 280),
                 child: Column(
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 14.0),
+                      child: Center(
+                        child: Container(
+                          child: Text("Supervisor Login",style: TextStyle(color: Color.fromRGBO(57, 43, 116, 50),fontSize: 25,fontWeight: FontWeight.w800),),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 30,),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: TextFormField(
@@ -83,7 +92,7 @@ class _teachersLoginState extends State<teachersLogin> {
                           hintText: "Enter Student Email",),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: TextFormField(
@@ -130,14 +139,6 @@ class _teachersLoginState extends State<teachersLogin> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 14.0),
-                      child: Center(
-                        child: Container(
-                          child: Text("Supervisor Login",style: TextStyle(color: Color.fromRGBO(57, 43, 116, 50),fontSize: 25,fontWeight: FontWeight.w800),),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
