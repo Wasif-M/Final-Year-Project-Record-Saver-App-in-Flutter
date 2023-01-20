@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import "package:fyp_recordsaver/Screens/database/user_authentication.dart";
+
 class PasswordTextField extends StatelessWidget {
-   PasswordTextField({
+  PasswordTextField({
     Key? key,
     required this.passwordController,
   }) : super(key: key);
 
   final TextEditingController passwordController;
-  bool _isHidden=true;
+  bool _isHidden = true;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,12 +46,11 @@ class EmailTextField extends StatelessWidget {
         controller: emailController,
         validator: validateEmail,
         decoration: InputDecoration(
-      border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12)),
-    suffixIcon: Icon(Icons.email),
-    labelText: "Email",
-    hintText: "gmail@.com",
-    ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+          prefixIcon: Icon(Icons.email),
+          labelText: "Email",
+          hintText: "gmail@.com",
+        ),
       ),
     );
   }

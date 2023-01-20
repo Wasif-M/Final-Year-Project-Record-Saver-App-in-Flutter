@@ -11,7 +11,6 @@ class teachersLogin extends StatefulWidget {
 
 class _teachersLoginState extends State<teachersLogin> {
   bool loading=false;
-  final _auth = FirebaseAuth.instance;
   final emailController= TextEditingController();
   final passwordController=TextEditingController();
   final formKey= GlobalKey<FormState>();

@@ -1,8 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:auth/auth.dart';
+import 'package:fyp_recordsaver/Widgets/Button.dart';
 import 'package:fyp_recordsaver/Widgets/text_field.dart';
-import 'StudentDisplay.dart';
-import "package:fyp_recordsaver/Screens/database/user_authentication.dart";
 
 class studentInformation extends StatefulWidget {
   @override
@@ -14,25 +15,6 @@ class _studentInformationState extends State<studentInformation> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  bool _isHidden = true;
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
-
-  void login() {
-    _auth
-        .signInWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim(),
-        )
-        .then((value) => {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const studentDisplay())),
-            });
-  }
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -89,29 +71,12 @@ class _studentInformationState extends State<studentInformation> {
                     SizedBox(height: 5),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: InkWell(
-                        child: MaterialButton(
-                          onPressed: () {
-                            final isValidForm = formKey.currentState!.validate();
-                            if (isValidForm) {
-                              login();
-                            }
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(12)),
-                            child: Text(
-                              'Login',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20),
-                            ),
-                          ),
-                        ),
+                      child: CustomButton(
+                        emailController: emailController,
+                        key1: formKey,
+                        passwordController: passwordController,
+                        text: 'Login',
+                        state: true,
                       ),
                     ),
                   ],
