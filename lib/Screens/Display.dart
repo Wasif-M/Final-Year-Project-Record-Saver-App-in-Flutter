@@ -1,11 +1,10 @@
 import 'dart:async';
-
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:fyp_recordsaver/Screens/NewRecords.dart';
+import 'package:fyp_recordsaver/Bar.dart';
 import 'package:fyp_recordsaver/Screens/Update.dart';
-import 'Records.dart';
+
 class Display extends StatefulWidget {
   const Display({Key? key}) : super(key: key);
 
@@ -14,6 +13,12 @@ class Display extends StatefulWidget {
 }
 
 class _DisplayState extends State<Display> {
+  void initState() {
+    super.initState();
+
+    Timer(const Duration(seconds: 3), () {
+    });
+  }
   final dbR = FirebaseDatabase.instance.ref("NewRecords");
   final searchFilter = TextEditingController();
   final update = TextEditingController();
@@ -58,6 +63,7 @@ class _DisplayState extends State<Display> {
               ),
             ),
             FirebaseAnimatedList(
+              defaultChild: const ProgressBar(),
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,

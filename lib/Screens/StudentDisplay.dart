@@ -1,7 +1,12 @@
+import 'dart:async';
+
+import 'package:auth/auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'Records.dart';
+import 'package:fyp_recordsaver/Bar.dart';
+import 'package:fyp_recordsaver/Screens/user.dart';
+
 
 class studentDisplay extends StatefulWidget {
   const studentDisplay({Key? key}) : super(key: key);
@@ -12,8 +17,15 @@ class studentDisplay extends StatefulWidget {
 }
 
 class _studentDisplayState extends State<studentDisplay> {
+  void initState() {
+    super.initState();
+
+    Timer(const Duration(seconds: 3), () {
+    });
+  }
   final dbR = FirebaseDatabase.instance.ref("NewRecords");
   final searchFilter = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +33,7 @@ class _studentDisplayState extends State<studentDisplay> {
         actions: [
           TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                signOutUser(context);
               },
               child: Text(
                 'Logout',
@@ -66,6 +78,7 @@ class _studentDisplayState extends State<studentDisplay> {
             ),
 
             FirebaseAnimatedList(
+              defaultChild: const ProgressBar(),
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
@@ -112,24 +125,11 @@ class _studentDisplayState extends State<studentDisplay> {
                     .toString()
                     .contains(searchFilter.text.toString())) {
                   return ListTile(
-                    leading: Icon(
-                      Icons.verified_user_outlined,
-                      color: Color.fromRGBO(0, 103, 254, 50),
-                    ),
-                    trailing: PopupMenuButton(
-                      icon: Icon(Icons.more_vert_rounded),
-                      //color: Color.fromRGBO(0, 103, 254, 50),
-                      itemBuilder: (context) => [
-                        PopupMenuItem(value: 1,child: ListTile(
-                          leading: Icon(Icons.remove_red_eye_rounded),
-                          title: Text("View"),
-                          onTap: (){
-                            Navigator.push(
-                                context, MaterialPageRoute(builder: (context) => Records()));
-                          },
-                        )),
-                      ],
-                    ),
+                      leading: Icon(
+                        Icons.verified_user_outlined,
+                        color: Color.fromRGBO(0, 103, 254, 50),
+                      ),
+                      trailing: Icon(Icons.save_alt,color: Color.fromRGBO(0, 103, 254, 50),),
                     title: Text(
                       snapshot.child("Project Name").value.toString(),
                       style: TextStyle(
@@ -165,6 +165,13 @@ class _studentDisplayState extends State<studentDisplay> {
           ],
         ),
       ),
+    );
+  }
+  signOutUser(BuildContext ctx) {
+    FirebaseAuth.instance.signOut().then(
+          (value) => Navigator.of(ctx).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const WhoAreYou()),
+              (Route<dynamic> route) => false),
     );
   }
 }

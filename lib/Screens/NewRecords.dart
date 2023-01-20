@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
+import 'package:fyp_recordsaver/Screens/user.dart';
 import 'HomeScreen.dart';
 import 'package:firebase_database/firebase_database.dart';
 class NewRecords extends StatelessWidget {
@@ -243,9 +244,8 @@ class _DataFillingState extends State<DataFilling> {
                           "Date": _date.text,
                           "Batch No": batch.text,
                         };
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => const HomeScreen()));
                         dbR.push().set(NewRecords);
-
-                        Navigator.pop(context);
                       }
                     },
                     child: Container(

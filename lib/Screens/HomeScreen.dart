@@ -1,4 +1,6 @@
+import 'package:auth/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp_recordsaver/Screens/HomeScreen.dart';
 import 'package:fyp_recordsaver/Screens/user.dart';
 import 'NewRecords.dart';
 import 'package:fyp_recordsaver/Screens/Display.dart';
@@ -111,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.only(top: 600),
             child: MaterialButton(
               onPressed: () {
-                Navigator.pop(context);
+                signOutUser(context);
               },
               child: Container(
                 alignment: Alignment.center,
@@ -131,6 +133,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+    );
+  }
+  signOutUser(BuildContext ctx) {
+    FirebaseAuth.instance.signOut().then(
+          (value) => Navigator.of(ctx).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const WhoAreYou()),
+              (Route<dynamic> route) => false),
     );
   }
 }

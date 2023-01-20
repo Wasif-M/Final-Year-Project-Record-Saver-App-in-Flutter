@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:auth/auth.dart';
+import 'package:fyp_recordsaver/Widgets/text_field.dart';
 import 'StudentDisplay.dart';
+import "package:fyp_recordsaver/Screens/database/user_authentication.dart";
 
 class studentInformation extends StatefulWidget {
   @override
@@ -72,58 +74,15 @@ class _studentInformationState extends State<studentInformation> {
                     SizedBox(height: 20,),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: TextFormField(
-                        validator: (emailController) {
-                          if (emailController!.isNotEmpty) {
-                            if (RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                .hasMatch(emailController)) {
-                              return null;
-                            }
-                          } else {
-                            return 'Email is required';
-                          }
-                          return 'Invalid email';
-                        },
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          suffixIcon: Icon(Icons.email),
-                          labelText: "Email",
-                          hintText: "gmail@.com",
-                        ),
+                      child: EmailTextField(
+                        emailController: emailController,
                       ),
                     ),
                     SafeArea(
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: TextFormField(
-                          validator: (passwordController) {
-                            if (passwordController!.isNotEmpty) {
-                              if (passwordController.length < 8) {
-                                return 'Password must be at least 8 characters';
-                              }
-                              return null;
-                            } else {
-                              return 'Password is required';
-                            }
-                          },
-                          controller: passwordController,
-                          obscureText: _isHidden,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            prefixIcon: Icon(Icons.lock),
-                            suffixIcon: GestureDetector(onTap: (){
-                              setState(() {
-                                _isHidden=! _isHidden;
-                              });
-                            },
-                              child: Icon(_isHidden ? Icons.visibility :Icons.visibility_off),),
-                            labelText: "Enter Password",
-                            hintText: "Password",
-                          ),
+                        child: PasswordTextField(
+                          passwordController: passwordController,
                         ),
                       ),
                     ),
