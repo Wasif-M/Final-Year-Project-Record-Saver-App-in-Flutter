@@ -17,3 +17,28 @@ The Final Year Project Record Saver App is a tool designed to help students save
 ## Prerequisites
 - Flutter SDK
 - Android Studio or Xcode (for running on an emulator or device)
+
+## Build With
+- Flutter
+
+## Plugins
+-  cupertino_icons: ^1.0.2
+-  date_format: ^2.0.7
+-  easy_splash_screen: ^1.0.4
+-  firebase_core: ^2.3.0
+-  cloud_firestore: ^4.2.0
+-  auth: ^8.2.0
+-  flutter_spinkit: ^5.1.0
+-  firebase_database: ^10.0.7
+## Sample Images
+|1|2|3|4|5|
+|-|-|-|-|-|
+|![](https://github.com/Wasif-M/Final-Year-Project-Record-Saver-App-in-Flutter/blob/main/s1.PNG)| ![](https://github.com/Wasif-M/Final-Year-Project-Record-Saver-App-in-Flutter/blob/main/s2.PNG)| |![](https://github.com/Wasif-M/Final-Year-Project-Record-Saver-App-in-Flutter/blob/main/s3.PNG)| ![](https://github.com/Wasif-M/Final-Year-Project-Record-Saver-App-in-Flutter/blob/main/WhatsApp%20Image%202023-01-21%20at%2000.03.43.jpeg)|![](https://github.com/Wasif-M/Final-Year-Project-Record-Saver-App-in-Flutter/blob/main/s4.PNG)| 
+## Sample Images
+|6|7|8|
+|-|-|-|
+![](https://github.com/Wasif-M/Final-Year-Project-Record-Saver-App-in-Flutter/blob/main/s5.PNG)|![](https://github.com/Wasif-M/Final-Year-Project-Record-Saver-App-in-Flutter/blob/main/s6.PNG)| ![](https://github.com/Wasif-M/Final-Year-Project-Record-Saver-App-in-Flutter/blob/main/s7.PNG)|
+
+## Developer Contact Information
+- LinkedIn: (https://www.linkedin.com/in/wasif-mehmood-b01249170/)
+- GitHub: (https://github.com/Wasif-M)
