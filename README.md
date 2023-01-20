@@ -20,6 +20,7 @@ The Final Year Project Record Saver App is a tool designed to help students save
 
 ## Build With
 - Flutter
+- Firebase
 
 ## Plugins
 -  cupertino_icons: ^1.0.2
