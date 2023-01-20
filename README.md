@@ -1,4 +1,4 @@
-# fyp_recordsaver
+# Final Year Project Record Saver App
 
 A new Flutter project.
 
