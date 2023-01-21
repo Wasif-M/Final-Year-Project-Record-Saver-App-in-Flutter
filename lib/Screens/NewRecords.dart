@@ -206,7 +206,7 @@ class _DataFillingState extends State<DataFilling> {
                 child: TextFormField(
                   validator: (description) {
                     if (description!.isNotEmpty) {
-                      if (RegExp(r"^[a-zA-Z]*$").hasMatch(description)) {
+                      if (RegExp(r"^[a-zA-Z ]+$").hasMatch(description)) {
                         return null;
                       }
                       return 'Invalid Description';
@@ -214,7 +214,6 @@ class _DataFillingState extends State<DataFilling> {
                       return 'Description is required';
                     }
                   },
-
                   controller: description,
                   cursorHeight: 20,
                   maxLines: 5,
