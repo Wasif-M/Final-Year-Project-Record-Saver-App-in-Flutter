@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:auth/auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -6,26 +7,30 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:fyp_recordsaver/Bar.dart';
 import 'package:fyp_recordsaver/Screens/user.dart';
 
-
 class studentDisplay extends StatefulWidget {
   const studentDisplay({Key? key}) : super(key: key);
 
   @override
-
   State<studentDisplay> createState() => _studentDisplayState();
 }
 
 class _studentDisplayState extends State<studentDisplay> {
+  @override
   void initState() {
     super.initState();
 
     Timer(const Duration(seconds: 3), () {
     });
   }
-  final dbR = FirebaseDatabase.instance.ref("NewRecords");
-  final searchFilter = TextEditingController();
 
-  @override
+  signOutUser(BuildContext ctx) {
+    FirebaseAuth.instance.signOut().then(
+          (value) => Navigator.of(ctx).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const WhoAreYou()),
+              (Route<dynamic> route) => false),
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -54,38 +59,53 @@ class _studentDisplayState extends State<studentDisplay> {
               )),
         ),
       ),
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: TextFormField(
-                controller: searchFilter,
-                decoration: InputDecoration(
-                  hintText: "Search",
-                  border: OutlineInputBorder(),
-                ),
-                onChanged: (String value) {
-                  setState(() {});
-                },
-              ),
-            ),
+      body: DisplayRecords(),
+    );
+  }
+}
+class DisplayRecords extends StatefulWidget {
+  const DisplayRecords({Key? key}) : super(key: key);
 
-            FirebaseAnimatedList(
-              defaultChild: const ProgressBar(),
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              query: dbR,
-              itemBuilder: (context, snapshot, animation, index) {
-                final title = snapshot.child("Project Name").value.toString();
-                if (searchFilter.text.isEmpty) {
-                  return ListTile(
+  @override
+  State<DisplayRecords> createState() => _DisplayRecordsState();
+}
+
+class _DisplayRecordsState extends State<DisplayRecords> {
+  @override
+  final dbR = FirebaseDatabase.instance.ref("NewRecords");
+  final searchFilter = TextEditingController();
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: TextFormField(
+              controller: searchFilter,
+              decoration: InputDecoration(
+                hintText: "Search",
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (String value) {
+                setState(() {});
+              },
+            ),
+          ),
+
+          FirebaseAnimatedList(
+            defaultChild: const ProgressBar(),
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            query: dbR,
+            itemBuilder: (context, snapshot, animation, index) {
+              final title = snapshot.child("Project Name").value.toString();
+              if (searchFilter.text.isEmpty) {
+                return ListTile(
                     leading: Icon(
                       Icons.verified_user_outlined,
                       color: Color.fromRGBO(0, 103, 254, 50),
@@ -103,7 +123,7 @@ class _studentDisplayState extends State<studentDisplay> {
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromRGBO(0, 103, 254, 50),
                                 fontSize: 16)),
-                        Text("Bacth No:" +snapshot.child("Batch No").value.toString(),
+                        Text("Batch No:" +snapshot.child("Batch No").value.toString(),
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 103, 254, 50),
                                 fontSize: 15)),
@@ -119,16 +139,16 @@ class _studentDisplayState extends State<studentDisplay> {
                       ],
                     )
 
-                  );
-                } else if (title
-                    .toString()
-                    .contains(searchFilter.text.toString())) {
-                  return ListTile(
-                      leading: Icon(
-                        Icons.verified_user_outlined,
-                        color: Color.fromRGBO(0, 103, 254, 50),
-                      ),
-                      trailing: Icon(Icons.save_alt,color: Color.fromRGBO(0, 103, 254, 50),),
+                );
+              } else if (title
+                  .toString()
+                  .contains(searchFilter.text.toString())) {
+                return ListTile(
+                    leading: Icon(
+                      Icons.verified_user_outlined,
+                      color: Color.fromRGBO(0, 103, 254, 50),
+                    ),
+                    trailing: Icon(Icons.save_alt,color: Color.fromRGBO(0, 103, 254, 50),),
                     title: Text(
                       snapshot.child("Project Name").value.toString(),
                       style: TextStyle(
@@ -141,7 +161,7 @@ class _studentDisplayState extends State<studentDisplay> {
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromRGBO(0, 103, 254, 50),
                                 fontSize: 16)),
-                        Text("Bacth No: "+snapshot.child("Batch No").value.toString(),
+                        Text("Batch No: "+snapshot.child("Batch No").value.toString(),
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 103, 254, 50),
                                 fontSize: 15)),
@@ -156,21 +176,13 @@ class _studentDisplayState extends State<studentDisplay> {
 
                       ],
                     )
-                  );
-                } else
-                  return Container();
-              },
-            ),
-          ],
-        ),
+                );
+              } else
+                return Container();
+            },
+          ),
+        ],
       ),
-    );
-  }
-  signOutUser(BuildContext ctx) {
-    FirebaseAuth.instance.signOut().then(
-          (value) => Navigator.of(ctx).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => const WhoAreYou()),
-              (Route<dynamic> route) => false),
     );
   }
 }

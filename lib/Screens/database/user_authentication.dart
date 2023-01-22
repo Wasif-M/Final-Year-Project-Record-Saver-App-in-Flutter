@@ -1,7 +1,7 @@
 import 'package:auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_recordsaver/Screens/HomeScreen.dart';
-import 'package:fyp_recordsaver/Screens/StudentDisplay.dart';
+import 'package:fyp_recordsaver/Screens/StudentShow.dart';
 
 class ValidateEmailAndPassword {
   final String emailController;
