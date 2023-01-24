@@ -14,9 +14,9 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Center(
       child: EasySplashScreen(
-        logo: Image(image: AssetImage('assets/ilustration.png')), // When we open the App the splash screen will appear to user only for 2 second
+        logo: Image(image: AssetImage('assets/ilustration.png')),
         logoWidth: 200,
-        navigator: WhoAreYou(), //After splash screen user directly navigate to Screen where he would choose his role as a student or supervisor
+        navigator: WhoAreYou(),
         durationInSeconds: 2,
         showLoader: false,
       ),

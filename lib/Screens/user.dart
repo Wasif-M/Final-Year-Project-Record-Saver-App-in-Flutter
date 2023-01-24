@@ -62,7 +62,7 @@ class _WhoAreYouState extends State<WhoAreYou> {
                     child: MaterialButton(
                       onPressed: (){
 
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> studentInformation())); //After scuessful executing this line user will navigate to student login screen
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> studentInformation()));
                       },
                       child: Container(
                         decoration: BoxDecoration(

@@ -1,7 +1,6 @@
 import 'package:date_format/date_format.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp_recordsaver/Screens/Display.dart';
 import 'package:fyp_recordsaver/Screens/HomeScreen.dart';
 
 class Update extends StatefulWidget {

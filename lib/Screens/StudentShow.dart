@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:auth/auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';

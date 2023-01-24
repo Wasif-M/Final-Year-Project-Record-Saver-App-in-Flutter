@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:fyp_recordsaver/Widgets/Button.dart';
 import 'package:fyp_recordsaver/Widgets/text_field.dart';
-import 'package:auth/auth.dart';
 class teachersLogin extends StatefulWidget {
   const teachersLogin({Key? key}) : super(key: key);
 
