@@ -15,12 +15,12 @@ class studentDisplay extends StatefulWidget {
 
 class _studentDisplayState extends State<studentDisplay> {
   @override
-  /*void initState() {
+  void initState() {
     super.initState();
 
     Timer(const Duration(seconds: 3), () {
     });
-  }*/
+  }
 
   signOutUser(BuildContext ctx) {
     FirebaseAuth.instance.signOut().then(
