@@ -21,8 +21,6 @@ class _UpdateState extends State<Update> {
   TextEditingController batch = TextEditingController();
   late DatabaseReference dbR;
   final formKey = GlobalKey<FormState>();
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool _loading =false;
   @override
   void initState() {
     super.initState();

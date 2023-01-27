@@ -142,12 +142,12 @@ packages:
     source: hosted
     version: "4.5.2"
   firebase_core_web:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_core_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2"
+    version: "2.1.0"
   firebase_database:
     dependency: "direct main"
     description:
