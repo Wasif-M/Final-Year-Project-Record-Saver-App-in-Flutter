@@ -13,7 +13,7 @@ class _ProgressBarState extends State<ProgressBar> {
   Widget build(BuildContext context) {
     return SpinKitThreeBounce(
       size: 30,
-      itemBuilder: (BuildContext context, int index) {
+      itemBuilder: (BuildContext context, int ndex) {
         return const DecoratedBox(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
